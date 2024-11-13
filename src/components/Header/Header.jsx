@@ -1,21 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Header.scss";
 import inStockLogo from "../../assets/logo/InStock-Logo.svg";
 
-function Header({ currPage }) {
+function Header() {
   return (
     <header className="header">
-      <Link to="/" className="header__link">
-        <img className="header__logo" src={inStockLogo} alt="In stock Logo" />
+      <Link to="/">
+        <img src={inStockLogo} alt="Instock Logo" />
       </Link>
-
-      <div className="nav">
-        <Link to="/warehouses" className="nav__warehouses">
+      <div className="header-container">
+        <NavLink
+          to="/warehouses"
+          className={({ isActive }) =>
+            isActive
+              ? "header-container__link header-container__link--active"
+              : "header-container__link"
+          }
+        >
           Warehouses
-        </Link>
-        <Link to="/inventory" className="nav__inventory">
+        </NavLink>
+        <NavLink
+          to="/inventory"
+          className={({ isActive }) =>
+            isActive
+              ? "header-container__link header-container__link--active"
+              : "header-container__link"
+          }
+        >
           Inventory
-        </Link>
+        </NavLink>
       </div>
     </header>
   );
