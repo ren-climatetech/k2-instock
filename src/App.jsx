@@ -3,6 +3,8 @@ import WarehousePage from './pages/WarehousePage/WarehousePage';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
 import WarehouseItemPage from './pages/WarehouseItemPage/WarehouseItemPage';
 import InventoryItemPage from './pages/InventoryItemPage/InventoryItemPage';
+import EditInventoryItemPage from './pages/EditInventoryItemPage/EditInventoryItemPage';
+import EditWarehouseItemPage from './pages/EditWarehouseItemPage/EditWarehouseItemPage';
 
 import './App.css'
 
@@ -19,8 +21,8 @@ function App() {
           <Route path="/inventory/:itemId" element={ <InventoryItemPage/> } />
 
           {/* Edit Pages */}
-          <Route path="/warehouse/:itemId" element={ <WarehouseItemPage/> } />
-          <Route path="/inventory/:itemId" element={ <InventoryItemPage/> } />
+          <Route path="/warehouse/:itemId/edit" element={ <EditWarehouseItemPage/> } />
+          <Route path="/inventory/:itemId/edit" element={ <EditInventoryItemPage/> } />
 
 
         </Routes>
