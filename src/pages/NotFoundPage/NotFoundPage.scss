@@ -1,15 +1,21 @@
-.error{
-    background-color: white;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
-    &__home-button{
-        text-decoration: none;
-        color: rgb(46,102,229);
-        font-weight: 600;
-        cursor: pointer;
-    }
+
+.error {
+  background-color: $primary-white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  border-radius: 3px;
+  box-shadow: $box-shadow;
+
+  &__home-button {
+    text-decoration: none;
+    color: rgb(46, 102, 229);
+    font-weight: 600;
+    cursor: pointer;
+  }
 }
