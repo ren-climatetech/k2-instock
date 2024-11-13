@@ -1,0 +1,17 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.footer {
+  &__container {
+    color: $secondary-slate;
+    font-size: 0.6875rem;
+    text-align: center;
+    padding: 2.5rem 0;
+    @include tablet {
+      padding-top: 9.6875rem;
+    }
+    @include desktop {
+        padding-top: 5.9375rem;
+      }
+  }
+}
