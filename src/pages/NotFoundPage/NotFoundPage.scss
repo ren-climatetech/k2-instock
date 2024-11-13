@@ -1,0 +1,14 @@
+.error{
+    background-color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    &__home-button{
+        text-decoration: none;
+        color: rgb(46,102,229);
+        font-weight: 600;
+        cursor: pointer;
+    }
+}

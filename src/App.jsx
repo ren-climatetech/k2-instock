@@ -10,6 +10,7 @@ import AddInventoryPage from "./pages/AddInventoryPage/AddInventoryPage.jsx";
 
 import "./App.scss";
 import Header from "./components/Header/Header.jsx";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Header />
       <Routes>
         {/* Main pages */}
+        <Route path="/" element={<WarehousePage />} />
         <Route path="/warehouses" element={<WarehousePage />} />
         <Route path="/inventories" element={<InventoryPage />} />
 
@@ -37,6 +39,8 @@ function App() {
         {/* Add Pages */}
         <Route path="/warehouse/add" element={<AddWarehousePage />} />
         <Route path="/inventory/add" element={<AddInventoryPage />} />
+        {/* Not found */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
