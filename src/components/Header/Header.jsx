@@ -20,7 +20,7 @@ function Header() {
           Warehouses
         </NavLink>
         <NavLink
-          to="/inventory"
+          to="/inventories"
           className={({ isActive }) =>
             isActive
               ? "header-container__link header-container__link--active"
