@@ -11,3 +11,8 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  background: linear-gradient($bg-graphite 200px, $bg-light-grey 200px);
+  min-height: 100vh;
+}
