@@ -9,6 +9,7 @@
     padding: 2.5rem 0;
     @include tablet {
       padding-top: 9.6875rem;
+      font-size: .75rem;
     }
     @include desktop {
         padding-top: 5.9375rem;
