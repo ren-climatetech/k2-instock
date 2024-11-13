@@ -11,6 +11,7 @@ import AddInventoryPage from "./pages/AddInventoryPage/AddInventoryPage.jsx";
 import "./App.scss";
 import Header from "./components/Header/Header.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         {/* Not found */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
