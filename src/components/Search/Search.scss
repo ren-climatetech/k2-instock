@@ -1,0 +1,29 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.search {
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  &__input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    border-radius: 1.25rem;
+    border: 1px solid $secondary-cloud;
+    outline: none;
+    @include tablet{
+        width: 11.5625rem;
+    }
+    @include desktop{
+        width: 17.125rem;
+    }
+  }
+  &__icon {
+    position: absolute;
+    right: 1rem;
+    cursor: pointer;
+  }
+}
