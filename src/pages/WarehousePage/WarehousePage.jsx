@@ -1,4 +1,4 @@
-import TextButton from "../../components/Buttons/AddButton/AddButton";
+import AddButton from "../../components/Buttons/AddButton/AddButton";
 import Search from "../../components/Search/Search";
 import "./WarehousePage.scss";
 
@@ -10,7 +10,7 @@ function WarehousePage() {
         <h1 className="warehouses__title">Warehouses</h1>
         <div className="warehouses__buttons">
         <Search />
-        <TextButton text="+ Add New Warehouse" />
+        <AddButton text="+ Add New Warehouse" path="/warehouse/add" />
         </div>
         </div>
       </div>
