@@ -1,0 +1,24 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.add-button{
+    width: 100%;
+    padding: 0.5rem 0;
+    border: 0;
+    border-radius: 1.25rem;
+     background-color: $primary-instock-indigo;
+     color: $primary-white;
+     font-size: .8125rem;
+     text-decoration: none;
+     transition: $transition;
+     &:hover, &:focus{
+      background-color: $primary-instock-black;
+     }
+
+     @include tablet {
+        width: auto; 
+        max-width: 8.625rem;
+        font-size: .875rem;
+        padding: 0.5rem 1rem;
+     }
+}
