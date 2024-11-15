@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../AddWarehouseForm/AddWarehouseForm.scss"
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -75,7 +76,7 @@ const AddWarehouseForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>Warehouse Name:</label>{" "}
+        <label className="">Warehouse Name:</label>{" "}
         <input
           type="text"
           name="warehouse_name"
