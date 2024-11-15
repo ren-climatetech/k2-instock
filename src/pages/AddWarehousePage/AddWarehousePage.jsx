@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import AddWarehouseForm from "../../components/AddWarehouseForm/AddWarehouseForm";
 
 function AddWarehousePage() {
   return (
-    <div>
-      Hello, I am an add warehouse page
-    </div>
-  )
+  <div>
+    <AddWarehouseForm/>
+  </div>
+  );
 }
 
-export default AddWarehousePage
+export default AddWarehousePage;
