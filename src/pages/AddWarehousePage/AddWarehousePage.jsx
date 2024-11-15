@@ -1,9 +1,10 @@
 import React from 'react'
+import WarehouseDetails from '../../components/WarehouseDetails/WarehouseDetails '
 
 function AddWarehousePage() {
   return (
     <div>
-      Hello, I am an add warehouse page
+      hello I am a page
     </div>
   )
 }
