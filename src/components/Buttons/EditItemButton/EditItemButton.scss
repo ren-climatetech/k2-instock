@@ -1,0 +1,30 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.edit-button{
+    @include flex-center;
+    padding: 0.5rem 0.5rem;
+    border-radius: 1.25rem;
+     background-color: $primary-instock-indigo;
+     color: $primary-white;
+     font-size: .8125rem;
+     text-decoration: none;
+     transition: $transition;
+     font-weight: 600;
+     &:hover, &:focus{
+      background-color: $primary-instock-black;
+     }
+     &__text{
+        display: none;
+        @include tablet{
+            display: block;
+        }
+     }
+
+     @include tablet {
+        width: 5.0625rem;
+        font-size: .875rem;
+        padding: 0.5rem 1rem;
+        gap: 5px;
+     }
+}
