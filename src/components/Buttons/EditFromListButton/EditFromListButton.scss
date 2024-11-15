@@ -1,0 +1,10 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.edit{
+    &-link{
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
