@@ -4,9 +4,8 @@ import WarehouseListHeader from "../../components/WarehouseListHeader/WarehouseL
 import "./WarehousePage.scss";
 import axios from "axios";
 import WarehousesList from "../../components/WarehousesList/WarehousesList";
-import SaveButton from "../../components/Buttons/SaveButton/SaveButton";
-import CancelButton from "../../components/Buttons/CancelButton/CancelButton"
 import AddLinkButton from "../../components/Buttons/AddLinkButton/AddLinkButton";
+
 
 function WarehousePage() {
   const [warehouses, setWarehouses] = useState([]);
@@ -39,7 +38,6 @@ function WarehousePage() {
         {/* Warehouse LIst Header */}
         <WarehouseListHeader />
         <WarehousesList warehouses={warehouses} />
-
       </div>
     </section>
   )
