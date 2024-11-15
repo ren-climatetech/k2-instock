@@ -1,0 +1,11 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.delete{
+    &-button{
+        border: 0;
+        background-color: transparent;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
