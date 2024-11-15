@@ -1,0 +1,21 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+
+.save-button{
+    width: 50%;
+    padding: 0.5rem 0;
+    border-radius: 1.25rem;
+    background-color: $primary-instock-indigo;
+    border: 0;
+    color: $primary-white;
+    font-size: .875rem;
+      transition: $transition;
+    &:hover, &:focus {
+        background-color: $primary-instock-black;
+    }
+    @include tablet{
+        width: 3.8125rem;
+        font-size: .875rem;
+    }
+}

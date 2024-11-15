@@ -1,0 +1,31 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.warehouses-header {
+  display: none;
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    padding: .6875rem 2rem;
+    text-transform: uppercase;
+    font-size: .75rem;
+    color: $secondary-slate;
+    background-color: $bg-light-grey;
+    margin-top: 1.5rem;
+  }
+  &__name-container{
+    @include tablet {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  &__name{
+   @include tablet{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+   }
+  }
+}
