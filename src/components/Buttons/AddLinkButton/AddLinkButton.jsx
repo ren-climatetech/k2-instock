@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import "./AddButton.scss";
+import "./AddLinkButton.scss";
 
-const AddButton= ({ text, path }) => {
+const AddLinkButton= ({ text, path }) => {
   return <Link to={path} className="add-link">{text}</Link>;
 };
 
-export default AddButton;
+export default AddLinkButton;
