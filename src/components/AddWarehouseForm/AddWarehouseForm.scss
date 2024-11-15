@@ -3,3 +3,68 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
+.add-warehouse__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    &_warehouse {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid $secondary-cloud;
+
+        &-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.75rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        &-label {
+            font-size: .8125rem;
+            font-weight: 600;
+            line-height: 1.25rem;
+            padding-top: .5rem;
+            padding-bottom: .2rem;
+        }
+
+        &-input {
+            height: 2.25rem;
+            border-radius: 20px; 
+            border: 1px solid $secondary-cloud;
+            background-color: $primary-white;
+        }
+    }
+
+    &_contact {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        &-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.75rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        &-label {
+            font-size: .8125rem;
+            font-weight: 600;
+            line-height: 1.25rem;
+            padding-top: .5rem;
+            padding-bottom: .2rem;
+        }
+
+        &-input {
+            height: 2.25rem;
+            border-radius: 20px; 
+            border: 1px solid $secondary-cloud;
+            background-color: $primary-white;
+        }
+    }
+}

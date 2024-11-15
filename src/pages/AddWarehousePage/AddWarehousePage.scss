@@ -1,0 +1,36 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+
+.layout {
+     margin-left: 1rem;
+    margin-right: 1rem;
+} 
+
+.add-warehouse__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-bottom: 0.25rem;
+    background-color: $primary-white;
+    border-radius: 3px;
+    box-shadow: $box-shadow;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    
+    &-header {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding-top:2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid $secondary-cloud;
+
+        &-title {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            font-weight: 600;
+            
+        }
+    }
+}
