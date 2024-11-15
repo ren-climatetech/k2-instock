@@ -3,7 +3,7 @@
 
 
 .layout {
-     margin-left: 1rem;
+    margin-left: 1rem;
     margin-right: 1rem;
 } 
 
@@ -19,18 +19,24 @@
     padding-right: 1.5rem;
     
     &-header {
+        display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         padding-top:2rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid $secondary-cloud;
+        gap:.3rem;
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
 
         &-title {
             font-size: 1.25rem;
             line-height: 1.75rem;
             font-weight: 600;
-            
+            // padding-top: 2rem;
         }
     }
 }

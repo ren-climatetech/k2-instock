@@ -1,0 +1,9 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.go-back-button {
+    background-color: $primary-white;
+    border: none;
+    align-self: center;
+    padding-top: .6rem;
+}

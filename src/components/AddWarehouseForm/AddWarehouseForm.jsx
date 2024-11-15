@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../AddWarehouseForm/AddWarehouseForm.scss"
+import "../AddWarehouseForm/AddWarehouseForm.scss";
+import { useNavigate } from "react-router-dom";
+import AddSubmitButton from "../Buttons/AddSubmitButton/AddSubmitButton";
+import CancelButton from "../Buttons/CancelButton/CancelButton";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -17,7 +20,7 @@ const AddWarehouseForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-  
+
   const validateForm = () => {
     const newErrors = {};
     const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -73,11 +76,29 @@ const AddWarehouseForm = () => {
     }
   };
 
+  const handleCancel = () => {
+    setForm({
+      warehouse_name: "",
+      address: "",
+      city: "",
+      country: "",
+      contact_name: "",
+      contact_position: "",
+      contact_phone: "",
+      contact_email: "",
+    });
+    navigate("/warehouses");
+  };
+
   return (
     <form className="add-warehouse__form" onSubmit={handleSubmit}>
       <div className="add-warehouse__form_warehouse">
-        <h2 className="add-warehouse__form_warehouse-title">Warehouse Details</h2>
-        <label className="add-warehouse__form_warehouse-label">Warehouse Name</label>
+        <h2 className="add-warehouse__form_warehouse-title">
+          Warehouse Details
+        </h2>
+        <label className="add-warehouse__form_warehouse-label">
+          Warehouse Name
+        </label>
         <input
           className="add-warehouse__form_warehouse-input"
           type="text"
@@ -87,7 +108,9 @@ const AddWarehouseForm = () => {
           onChange={handleChange}
         />
         {errors.warehouse_name && <span>{errors.warehouse_name}</span>}
-        <label className="add-warehouse__form_warehouse-label">Street Address</label>{" "}
+        <label className="add-warehouse__form_warehouse-label">
+          Street Address
+        </label>{" "}
         <input
           className="add-warehouse__form_warehouse-input"
           type="text"
@@ -107,7 +130,9 @@ const AddWarehouseForm = () => {
           onChange={handleChange}
         />
         {errors.city && <span>{errors.city}</span>}
-        <label className="add-warehouse__form_warehouse-label">Country</label>{" "}
+        <label className="add-warehouse__form_warehouse-label">
+          Country
+        </label>{" "}
         <input
           className="add-warehouse__form_warehouse-input"
           type="text"
@@ -120,16 +145,21 @@ const AddWarehouseForm = () => {
       </div>
       <div className="add-warehouse__form_contact">
         <h2 className="add-warehouse__form_contact-title">Contact Details</h2>
-        <label className="add-warehouse__form_contact-label">Contact Name</label>
+        <label className="add-warehouse__form_contact-label">
+          Contact Name
+        </label>
         <input
           className="add-warehouse__form_contact-input"
           type="text"
           name="contact_name"
           value={form.contact_name}
+          placeholder="Contact Name"
           onChange={handleChange}
         />
         {errors.contact_name && <span>{errors.contact_name}</span>}
-        <label className="add-warehouse__form_contact-label">Contact Position</label>
+        <label className="add-warehouse__form_contact-label">
+          Contact Position
+        </label>
         <input
           className="add-warehouse__form_contact-input"
           type="text"
@@ -139,29 +169,35 @@ const AddWarehouseForm = () => {
           onChange={handleChange}
         />
         {errors.contact_position && <span>{errors.contact_position}</span>}
-        <label className="add-warehouse__form_contact-label">Contact Phone</label>
+        <label className="add-warehouse__form_contact-label">
+          Contact Phone
+        </label>
         <input
           className="add-warehouse__form_contact-input"
           type="text"
           name="contact_phone"
           value={form.contact_phone}
+          placeholder="Phone Number"
           onChange={handleChange}
         />
         {errors.contact_phone && <span>{errors.contact_phone}</span>}
-        <label className="add-warehouse__form_contact-label">Contact Email</label>
+        <label className="add-warehouse__form_contact-label">
+          Contact Email
+        </label>
         <input
           className="add-warehouse__form_contact-input"
           type="text"
           name="contact_email"
           value={form.contact_email}
+          placeholder="Email"
           onChange={handleChange}
         />
         {errors.contact_email && <span>{errors.contact_email}</span>}
-    </div>
-    <div>
-      <button type="submit">Cancel</button>
-      <button type="submit">+Add Warehouse</button>
-    </div>
+      </div>
+      <div className="add-warehouse__form_buttons">
+        <CancelButton onClick={handleCancel}/>
+        <AddSubmitButton text="+Add Warehouse"/>
+      </div>
     </form>
   );
 };
