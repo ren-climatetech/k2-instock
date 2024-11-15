@@ -8,7 +8,10 @@
     border-radius: 1.25rem;
     background-color: transparent;
     border: 1px solid $secondary-cloud;
+    color: $secondary-slate;
+    font-size: .8125rem;
     @include tablet{
         width: 4.5rem;
+        font-size: .875rem;
     }
 }
