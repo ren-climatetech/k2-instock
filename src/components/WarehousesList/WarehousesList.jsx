@@ -18,17 +18,17 @@ const WarehousesList = ({ warehouses }) => {
         }) => {
           return (
             <li key={id} className="warehouses__item">
-                  <Link to={`/warehouse/${id}`} className="warehouses__info-link">
+                  <div className="warehouses__info-link">
                 <div className="warehouses__content">
                   <span className="warehouses__label">Warehouse</span>
-                  <p className="warehouses__warehouse">
+                  <Link to={`/warehouse/${id}`} className="warehouses__warehouse">
                     {warehouse_name}
                     <img
                       src={chevronIcon}
                       alt="arrow icon"
                       className="warehouses__warehouse-icon"
                     />
-                  </p>
+                  </Link>
                 </div>
                 <div className="warehouses__content warehouses__content-address">
                   <span className="warehouses__label">address</span>
@@ -43,7 +43,7 @@ const WarehousesList = ({ warehouses }) => {
                   <p>{contact_phone}</p>
                   <p>{contact_email}</p>
                 </div>
-              </Link>
+              </div>
               <div className="action-buttons">
                 <DeleteFromListButton />
                 <EditFromListButton path="/warehouse/:itemId/edit"/>

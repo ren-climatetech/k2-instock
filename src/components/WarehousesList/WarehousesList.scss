@@ -13,10 +13,14 @@
   &__item {
     position: relative;
     padding: 1rem 2rem;
+    transition: $transition;
     @include tablet {
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+    &:hover, &:focus{
+   background-color: $item-hover-color;
     }
     &::after {
       content: "";
@@ -54,7 +58,7 @@
     flex-wrap: wrap;
     row-gap: 1rem;
     column-gap: 2.85rem;
-    text-decoration: none;
+    
     color: $primary-instock-black;
     @include tablet {
       flex-wrap: nowrap;
@@ -89,8 +93,12 @@
     display: flex;
     align-items: center;
     gap: 0.1875rem;
+    text-decoration: none;
     color: $primary-instock-indigo;
     font-weight: 600;
+    &:hover, &:focus{
+      text-decoration: underline;
+       }
     &-icon {
       width: 1.25rem;
       height: 1.25rem;
