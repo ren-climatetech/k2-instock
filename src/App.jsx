@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import WarehousePage from "./pages/WarehousePage/WarehousePage.jsx";
 import InventoryPage from "./pages/InventoryPage/InventoryPage.jsx";
 import WarehouseItemPage from "./pages/WarehouseItemPage/WarehouseItemPage.jsx";
@@ -20,7 +20,7 @@ function App() {
       <Header />
       <Routes>
         {/* Main pages */}
-        <Route path="/" element={<WarehousePage />} />
+        <Route path="/" element={<Navigate to="/warehouses" replace />} />
         <Route path="/warehouses" element={<WarehousePage />} />
         <Route path="/inventories" element={<InventoryPage />} />
 
