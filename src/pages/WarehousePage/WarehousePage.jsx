@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import AddButton from "../../components/Buttons/AddButton/AddButton";
 import Search from "../../components/Search/Search";
 import WarehouseListHeader from "../../components/WarehouseListHeader/WarehouseListHeader";
 import "./WarehousePage.scss";
 import axios from "axios";
 import WarehousesList from "../../components/WarehousesList/WarehousesList";
+import AddLinkButton from "../../components/Buttons/AddLinkButton/AddLinkButton";
+
 
 function WarehousePage() {
   const [warehouses, setWarehouses] = useState([]);
@@ -31,14 +32,13 @@ function WarehousePage() {
         <h1 className="warehouses__title">Warehouses</h1>
         <div className="warehouses__buttons">
         <Search />
-        <AddButton text="+ Add New Warehouse" path="/warehouse/add" />
+        <AddLinkButton text="+ Add New Warehouse" path="/warehouse/add" />
         </div>
         </div>
         {/* Warehouse LIst Header */}
         <WarehouseListHeader />
-        <WarehousesList warehouses={warehouses}/>
+        <WarehousesList warehouses={warehouses} />
       </div>
-     
     </section>
   )
 }
