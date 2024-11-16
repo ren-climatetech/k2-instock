@@ -26,7 +26,6 @@ function InventoryItemPage() {
     getSingleInventoryItem();
   }, [itemId]);
 
-
   if (!inventoryItem) {
     return <div>Item not found.</div>;
   }
@@ -50,11 +49,11 @@ function InventoryItemPage() {
           {/* Left section */}
           <div className="item-info-left">
             <div className="item-info-left__desc">
-              <p className="item-info__title">Item Description:</p>
+              <p className="item-info__title">ITEM DESCRIPTION:</p>
               <p>{inventoryItem.description}</p>
             </div>
             <div className="item-info-left__category">
-              <p className="item-info__title">Category:</p>
+              <p className="item-info__title">CATEGORY:</p>
               <p>{inventoryItem.category}</p>
             </div>
           </div>
@@ -64,7 +63,7 @@ function InventoryItemPage() {
             <div className="status-and-quantity">
               <div className="status-and-warehouse">
                 <div className="item-info__status">
-                  <p className="item-info__title">Status:</p>
+                  <p className="item-info__title">STATUS:</p>
                   <p
                     className={`${
                       inventoryItem.status.toLowerCase() === "in stock"
@@ -76,12 +75,12 @@ function InventoryItemPage() {
                   </p>
                 </div>
                 <div className="item-info__warehouse">
-                  <p className="item-info__title">Warehouse:</p>
+                  <p className="item-info__title">WAREHOUSE:</p>
                   <p>{inventoryItem.warehouse_name}</p>
                 </div>
               </div>
               <div className="item-info__quantity">
-                <p className="item-info__title">Quantity:</p>
+                <p className="item-info__title">QUANTITY:</p>
                 <p>{inventoryItem.quantity}</p>
               </div>
             </div>
