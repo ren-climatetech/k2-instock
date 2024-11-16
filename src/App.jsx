@@ -33,13 +33,13 @@ function App() {
           element={<EditWarehouseItemPage />}
         />
         <Route
-          path="/inventory/:itemId/edit"
+          path="/inventories/:itemId/edit"
           element={<EditInventoryItemPage />}
         />
 
         {/* Add Pages */}
         <Route path="/warehouse/add" element={<AddWarehousePage />} />
-        <Route path="/inventory/add" element={<AddInventoryPage />} />
+        <Route path="/inventories/add" element={<AddInventoryPage />} />
         {/* Not found */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

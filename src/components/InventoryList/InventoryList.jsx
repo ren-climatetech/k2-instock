@@ -61,7 +61,7 @@ const InventoryList = ({ inventories }) => {
               </div>
               <div className="action-buttons">
                 <DeleteFromListButton />
-                <EditFromListButton path="/warehouse/:itemId/edit" />
+                <EditFromListButton path="/inventories/:itemId/edit" />
               </div>
             </li>
           );

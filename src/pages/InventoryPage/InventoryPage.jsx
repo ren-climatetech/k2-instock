@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AddButton from "../../components/Buttons/AddButton/AddButton";
+import AddLinkButton from "../../components/Buttons/AddLinkButton/AddLinkButton";
 import Search from "../../components/Search/Search";
 import InventoryListHeader from "../../components/InventoryListHeader/InventoryListHeader";
 import "./InventoryPage.scss";
@@ -34,7 +34,7 @@ function InventoryPage() {
           <h1 className="inventories__title">Inventory</h1>
           <div className="inventories__buttons">
             <Search />
-            <AddButton text="+ Add New Item" path="/warehouse/add" />
+            <AddLinkButton text="+ Add New Item" path="/inventories/add" />
           </div>
         </div>
         {/* Inventory List Header */}
