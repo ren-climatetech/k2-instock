@@ -11,14 +11,12 @@ const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 function InventoryItemPage() {
   const { itemId } = useParams();
   const [inventoryItem, setInventoryItem] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   async function getSingleInventoryItem() {
     try {
       const { data } = await axios.get(`${BASE_URL}/api/inventories/${itemId}`);
       console.log(data);
       setInventoryItem(data);
-      setLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -28,9 +26,6 @@ function InventoryItemPage() {
     getSingleInventoryItem();
   }, [itemId]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   if (!inventoryItem) {
     return <div>Item not found.</div>;
@@ -52,31 +47,43 @@ function InventoryItemPage() {
           </div>
         </div>
         <div className="item-info">
-          {/* left section */}
+          {/* Left section */}
           <div className="item-info-left">
             <div className="item-info-left__desc">
-              <p>Item Description:</p>
+              <p className="item-info__title">Item Description:</p>
               <p>{inventoryItem.description}</p>
             </div>
             <div className="item-info-left__category">
-              <p>Category</p>
+              <p className="item-info__title">Category:</p>
               <p>{inventoryItem.category}</p>
             </div>
           </div>
           <div className="item-info-divider"></div>
-          {/* right section */}
+          {/* Right section */}
           <div className="item-info-right">
-            <div className="item-info-left__status">
-              <p>Status:</p>
-              <p>{inventoryItem.status}</p>
-            </div>
-            <div className="item-info-left__quantity">
-              <p>Quantity:</p>
-              <p>{inventoryItem.quantity}</p>
-            </div>
-            <div className="item-info-left__warehouse">
-              <p>Warehouse:</p>
-              <p>{inventoryItem.warehouse_name}</p>
+            <div className="status-and-quantity">
+              <div className="status-and-warehouse">
+                <div className="item-info__status">
+                  <p className="item-info__title">Status:</p>
+                  <p
+                    className={`${
+                      inventoryItem.status.toLowerCase() === "in stock"
+                        ? "in-stock"
+                        : "out-of-stock"
+                    }`}
+                  >
+                    {inventoryItem.status}
+                  </p>
+                </div>
+                <div className="item-info__warehouse">
+                  <p className="item-info__title">Warehouse:</p>
+                  <p>{inventoryItem.warehouse_name}</p>
+                </div>
+              </div>
+              <div className="item-info__quantity">
+                <p className="item-info__title">Quantity:</p>
+                <p>{inventoryItem.quantity}</p>
+              </div>
             </div>
           </div>
         </div>
