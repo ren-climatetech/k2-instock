@@ -43,7 +43,7 @@ function InventoryItemPage() {
 
           <div className="inventories__buttons">
             {/* gotta edit this path!!!!!!!!!!! */}
-            <EditItemButton path="/inventories/:itemId/edit" />
+            <EditItemButton path={`/inventories/${itemId}/edit`} />
           </div>
         </div>
         <div className="item-info">
