@@ -17,7 +17,6 @@ const WarehousesList = () => {
   async function getWarehouses() {
      try {
        const {data}= await axios.get(`${baseUrl}/api/warehouses`);
-       console.log(data);
        setWarehouses(data);
      } catch (error) {
        console.error(error);
