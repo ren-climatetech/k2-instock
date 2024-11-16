@@ -52,9 +52,33 @@ function InventoryItemPage() {
           </div>
         </div>
         <div className="item-info">
-          <div className="item-info-left">left section</div>
-          <div className="item-info-divider"></div> {/* Add this line */}
-          <div className="item-info-right">right section</div>
+          {/* left section */}
+          <div className="item-info-left">
+            <div className="item-info-left__desc">
+              <p>Item Description:</p>
+              <p>{inventoryItem.description}</p>
+            </div>
+            <div className="item-info-left__category">
+              <p>Category</p>
+              <p>{inventoryItem.category}</p>
+            </div>
+          </div>
+          <div className="item-info-divider"></div>
+          {/* right section */}
+          <div className="item-info-right">
+            <div className="item-info-left__status">
+              <p>Status:</p>
+              <p>{inventoryItem.status}</p>
+            </div>
+            <div className="item-info-left__quantity">
+              <p>Quantity:</p>
+              <p>{inventoryItem.quantity}</p>
+            </div>
+            <div className="item-info-left__warehouse">
+              <p>Warehouse:</p>
+              <p>{inventoryItem.warehouse_name}</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
