@@ -125,7 +125,7 @@ const AddWarehouseForm = () => {
           </label>
           <input
             className={`add-warehouse__form-wrapper_warehouse-input ${
-              errors.warehouse_name ? "error" : ""
+              errors.address ? "error" : ""
             }`}
             type="text"
             name="address"
@@ -183,7 +183,7 @@ const AddWarehouseForm = () => {
           </label>
           <input
             className={`add-warehouse__form-wrapper_warehouse-input ${
-              errors.warehouse_name ? "error" : ""
+              errors.contact_name ? "error" : ""
             }`}
             type="text"
             name="contact_name"
@@ -202,7 +202,7 @@ const AddWarehouseForm = () => {
           </label>
           <input
             className={`add-warehouse__form-wrapper_contact-input ${
-              errors.warehouse_name ? "error" : ""
+              errors.contact_position ? "error" : ""
             }`}
             type="text"
             name="contact_position"
@@ -221,7 +221,7 @@ const AddWarehouseForm = () => {
           </label>
           <input
             className={`add-warehouse__form-wrapper_contact-input ${
-              errors.warehouse_name ? "error" : ""
+              errors.contact_phone ? "error" : ""
             }`}
             type="text"
             name="contact_phone"
@@ -240,7 +240,7 @@ const AddWarehouseForm = () => {
           </label>
           <input
             className={`add-warehouse__form-wrapper_contact-input ${
-              errors.warehouse_name ? "error" : ""
+              errors.contact_email ? "error" : ""
             }`}
             type="text"
             name="contact_email"
