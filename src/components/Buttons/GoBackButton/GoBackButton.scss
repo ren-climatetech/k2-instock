@@ -1,0 +1,16 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.go-back-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.3s ease;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}

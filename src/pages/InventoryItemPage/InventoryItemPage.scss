@@ -1,0 +1,44 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.inventories {
+  &__title {
+    margin-bottom: 0;
+  }
+  &__container {
+    padding-bottom: 1rem;
+  }
+
+  &__heading-and-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 2rem 1rem 2rem;
+  }
+
+  &__title-and-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}
+
+.item-info {
+  display: flex;
+  width: 100%;
+  gap: 2rem; /* Adjust the gap as needed */
+  padding: 2rem;
+  border-top: 1px solid $secondary-cloud;
+
+  &-divider {
+    width: 1px;
+    background-color: $secondary-cloud; // Use your desired color
+  }
+
+  .item-info-left,
+  .item-info-right {
+    flex: 1;
+    box-sizing: border-box;
+    padding: 1rem;
+  }
+}
