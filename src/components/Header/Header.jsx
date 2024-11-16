@@ -12,27 +12,26 @@ function Header() {
           <img src={inStockLogo} alt="Instock Logo" />
         </Link>
         <nav className="header-nav-links">
-          <NavLink
+          <Link
             to="/warehouses"
-            className={({ isActive }) =>
-              // Make the link active when either at the / path or /warehouses path
-              isActive || location.pathname === "/"
+            className={
+              location.pathname.includes("warehouse")
                 ? "header-container__link header-container__link--active"
                 : "header-container__link"
             }
           >
             Warehouses
-          </NavLink>
-          <NavLink
+          </Link>
+          <Link
             to="/inventories"
-            className={({ isActive }) =>
-              isActive
+            className={
+              location.pathname.includes("inventories")
                 ? "header-container__link header-container__link--active"
                 : "header-container__link"
             }
           >
             Inventory
-          </NavLink>
+          </Link>
         </nav>
       </div>
     </header>
