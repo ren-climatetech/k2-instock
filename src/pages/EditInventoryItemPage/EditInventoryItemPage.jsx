@@ -73,9 +73,7 @@ function EditInventoryItemPage() {
         <h3>Item Name</h3>
         <input type="text"></input>
         <h3>Description</h3>
-        {/* <textarea name="description" value="text-description">
-          {" "}
-        </textarea> */}
+        <textarea name="description"> </textarea>
         <h3>Category</h3>
         <select
           name="category"
