@@ -7,11 +7,12 @@ import EditInventoryItemPage from "./pages/EditInventoryItemPage/EditInventoryIt
 import EditWarehouseItemPage from "./pages/EditWarehouseItemPage/EditWarehouseItemPage.jsx";
 import AddWarehousePage from "./pages/AddWarehousePage/AddWarehousePage.jsx";
 import AddInventoryPage from "./pages/AddInventoryPage/AddInventoryPage.jsx";
-
+import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
 import Header from "./components/Header/Header.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import { Flip, ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -44,6 +45,19 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Flip}
+      />
     </BrowserRouter>
   );
 }
