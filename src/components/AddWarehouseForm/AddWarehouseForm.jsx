@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import AddSubmitButton from "../Buttons/AddSubmitButton/AddSubmitButton";
 import CancelButton from "../Buttons/CancelButton/CancelButton";
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 const AddWarehouseForm = () => {
+  const navigate = useNavigate(); //Initializing navigation
   const [form, setForm] = useState({
     warehouse_name: "",
     address: "",
@@ -64,9 +65,10 @@ const AddWarehouseForm = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const response = await axios.post(`${BASE_URL}/warehouses`, form);
+        const response = await axios.post(`${BASE_URL}/api/warehouses`, form);
         if (response.status === 201) {
           console.log("Warehouse created successfully");
+          navigate("/warehouses");
         } else {
           console.log("Error creating warehouse");
         }
