@@ -256,7 +256,7 @@
   border: 1px solid $secondary-cloud;
   
   &__error {
-    border: $supporting-red; 
+    border-color: $supporting-red; 
     padding-left: 3rem;
     font-size: .6875rem;
     color: $supporting-red;
