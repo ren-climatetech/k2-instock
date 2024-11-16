@@ -104,7 +104,10 @@ const AddWarehouseForm = () => {
             Warehouse Name
           </label>
           <input
-            className="add-warehouse__form-wrapper_warehouse-input"
+            className={`add-warehouse__form-wrapper_warehouse-input ${
+              errors.warehouse_name ? "error" : ""
+            }`}
+            // className="add-warehouse__form-wrapper_warehouse-input"
             type="text"
             name="warehouse_name"
             value={form.warehouse_name}
@@ -114,9 +117,12 @@ const AddWarehouseForm = () => {
           {errors.warehouse_name && <span className="add-warehouse__form-wrapper_warehouse-input__error">{errors.warehouse_name}</span>}
           <label className="add-warehouse__form-wrapper_warehouse-label">
             Street Address
-          </label>{" "}
+          </label>
           <input
-            className="add-warehouse__form-wrapper_warehouse-input"
+            // className="add-warehouse__form-wrapper_warehouse-input"
+            className={`add-warehouse__form-wrapper_warehouse-input ${
+              errors.warehouse_name ? "error" : ""
+            }`}
             type="text"
             name="address"
             value={form.address}
@@ -126,7 +132,10 @@ const AddWarehouseForm = () => {
           {errors.address && <span className="add-warehouse__form-wrapper_warehouse-input__error">{errors.address}</span>}
           <label className="add-warehouse__form-wrapper_warehouse-label">City</label>
           <input
-            className="add-warehouse__form-wrapper_warehouse-input"
+            // className="add-warehouse__form-wrapper_warehouse-input"
+            className={`add-warehouse__form-wrapper_warehouse-input ${
+              errors.warehouse_name ? "error" : ""
+            }`}
             type="text"
             name="city"
             value={form.city}
@@ -138,7 +147,10 @@ const AddWarehouseForm = () => {
             Country
           </label>
           <input
-            className="add-warehouse__form-wrapper_warehouse-input"
+            // className="add-warehouse__form-wrapper_warehouse-input"
+            className={`add-warehouse__form-wrapper_warehouse-input ${
+              errors.warehouse_name ? "error" : ""
+            }`}
             type="text"
             name="country"
             value={form.country}
@@ -153,7 +165,10 @@ const AddWarehouseForm = () => {
             Contact Name
           </label>
           <input
-            className="add-warehouse__form-wrapper_contact-input"
+            // className="add-warehouse__form-wrapper_contact-input"
+            className={`add-warehouse__form-wrapper_warehouse-input ${
+              errors.warehouse_name ? "error" : ""
+            }`}
             type="text"
             name="contact_name"
             value={form.contact_name}
@@ -165,7 +180,10 @@ const AddWarehouseForm = () => {
             Contact Position
           </label>
           <input
-            className="add-warehouse__form-wrapper_contact-input"
+            // className="add-warehouse__form-wrapper_contact-input"
+            className={`add-warehouse__form-wrapper_contact-input ${
+              errors.warehouse_name ? "error" : ""
+            }`}
             type="text"
             name="contact_position"
             value={form.contact_position}
@@ -177,7 +195,10 @@ const AddWarehouseForm = () => {
             Contact Phone
           </label>
           <input
-            className="add-warehouse__form-wrapper_contact-input"
+            // className="add-warehouse__form-wrapper_contact-input"
+            className={`add-warehouse__form-wrapper_contact-input ${
+              errors.warehouse_name ? "error" : ""
+            }`}
             type="text"
             name="contact_phone"
             value={form.contact_phone}
@@ -189,7 +210,10 @@ const AddWarehouseForm = () => {
             Contact Email
           </label>
           <input
-            className="add-warehouse__form-wrapper_contact-input"
+            // className="add-warehouse__form-wrapper_contact-input"
+            className={`add-warehouse__form-wrapper_contact-input ${
+              errors.warehouse_name ? "error" : ""
+            }`}
             type="text"
             name="contact_email"
             value={form.contact_email}
