@@ -7,7 +7,7 @@ import axios from "axios";
 import InventoryList from "../../components/InventoryList/InventoryList";
 
 // Use the base url from environment variables
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 function InventoryPage() {
   const [inventories, setInventories] = useState([]);
