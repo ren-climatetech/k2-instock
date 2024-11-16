@@ -1,0 +1,297 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.add-warehouse__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top:1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @include desktop {
+      margin-top:2rem;
+      margin-bottom: 2rem;
+    }
+
+    &_warehouse {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid $secondary-cloud;
+
+      @include tablet {
+        flex-grow: 1;
+        border-right: 1px solid $secondary-cloud;
+        border-bottom: none;
+      }
+
+      &-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1.75rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        @include tablet {
+          font-size:1.5rem;
+          line-height: 2rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        @include desktop {
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
+        }
+
+      }
+
+      &-label {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        line-height: 1.25rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.2rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        @include tablet {
+          font-size: .875rem;
+          line-height: 1.375rem;
+          padding-top: 1.5rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        @include desktop {
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
+        }
+
+      }
+
+      &-input {
+        height: 2.25rem;
+        border-radius: 20px;
+        border: 1px solid $secondary-cloud;
+        background-color: $primary-white;
+        padding-left: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        line-height: 1.25rem;
+        font-size: 13px;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+
+        @include tablet {
+          height: 2.375rem;
+          margin-left: 2rem;
+          margin-right: 2rem;
+        }
+
+        @include desktop {
+          margin-left: 2.5rem;
+          margin-right: 2.5rem;
+        }
+
+        &::placeholder {
+          font-size: 13px;
+          line-height: 1.25rem;
+          color: $secondary-slate;
+
+          @include tablet {
+            font-size: .875rem;
+            line-height: 1.375rem;
+          }
+        }
+
+        &:focus::placeholder {
+          opacity: 0;
+        }
+      }
+    }
+
+    &_contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-bottom: 1.5rem;
+
+      @include tablet {
+        flex-grow: 1;
+      }
+
+      &-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1.75rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        @include tablet {
+          font-size:1.5rem;
+          line-height: 2rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        @include desktop {
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
+        }
+      }
+
+      &-label {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        line-height: 1.25rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.2rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        @include tablet {
+          font-size: .875rem;
+          line-height: 1.375rem;
+          padding-top: 1.5rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        @include desktop {
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
+        }
+
+      }
+
+      &-input {
+        height: 2.25rem;
+        border-radius: 20px;
+        border: 1px solid $secondary-cloud;
+        background-color: $primary-white;
+        padding-left: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        line-height: 1.25rem;
+        font-size: 13px;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+
+        @include tablet {
+          height: 2.375rem;
+          margin-left: 2rem;
+          margin-right: 2rem;
+        }
+
+        @include desktop {
+          margin-left: 2.5rem;
+          margin-right: 2.5rem;
+        }
+
+        &::placeholder {
+          font-size: .8125rem;
+          line-height: 1.25rem;
+          color: $secondary-slate;
+
+          @include tablet {
+            font-size: .875rem;
+            line-height: 1.375rem;
+          }
+        }
+
+        &:focus::placeholder {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    padding-top: 0.5rem;
+    background-color: $bg-light-grey;
+    width: 100%;
+    height: 4.375rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @include tablet {
+      justify-content: flex-end;
+      padding: 0 2rem;
+    }
+
+    @include desktop {
+      padding: 0 2.5rem;
+    }
+  }
+
+}
+
+.add-warehouse__form-wrapper_warehouse-input,
+.add-warehouse__form-wrapper_contact-input {
+  transition: border-color 0.3s ease; 
+  border: 1px solid $secondary-cloud;
+}
+
+.add-warehouse__form-wrapper_warehouse-input.error,
+.add-warehouse__form-wrapper_contact-input.error {
+  border-color: $supporting-red;
+  height: 2.25rem;
+        border-radius: 20px;
+        padding-left: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        line-height: 1.25rem;
+        font-size: 13px;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+  
+        @include tablet {
+          height: 2.375rem;
+          margin-left: 2rem;
+          margin-right: 2rem;
+        }
+
+        @include desktop {
+          margin-left: 2.5rem;
+          margin-right: 2.5rem;
+        }
+
+}
+
+.add-warehouse__form-wrapper_warehouse-input__error,
+.add-warehouse__form-wrapper_contact-input__error {
+    padding-left: 2.05rem;
+    padding-top: .3125rem;
+    font-size: .6875rem;
+    color: $supporting-red;
+
+  img.error-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.2rem;
+    vertical-align: middle;
+  }
+}
