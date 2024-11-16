@@ -4,7 +4,7 @@ import "../../pages/WarehouseItemPage/WarehouseItemPage.scss"
 
 function WarehouseItemPage() {
   return (
-    <div>
+    <div className="layout warehouse-item__container">
       <WarehouseDetails />
     </div>
   );
