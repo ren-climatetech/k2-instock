@@ -1,34 +1,35 @@
 import "./EditInventoryItemPage.scss";
+import CancelButton from "../../components/Buttons/CancelButton/CancelButton";
+import SaveButton from "../../components/Buttons/SaveButton/SaveButton";
 import axios from "axios";
-import chevronIcon from "../../assets/icons/chevron_right-24px.svg";
+import arrowBack from "../../assets/icons/arrow_back-24px.svg";
+import arrowDropDown from "../../assets/icons/arrow_drop_down-24px.svg";
 import React, { useState, useEffect } from "react";
 
 function EditInventoryItemPage() {
   const [categories, setCategories] = useState([]);
-  const [warehouses, setWarehouses] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [stockStatus, setStockStatus] = useState("");
-  const [selectedWarehouse, setSelectedWarehouse] = useState("");
 
-  console.log("testing");
-  console.log("testing");
+  const [warehouses, setWarehouses] = useState([]);
+  const [selectedWarehouse, setSelectedWarehouse] = useState("");
+  const [selectedWarehouses, setSelectedWarehouses] = useState([]);
 
   useEffect(() => {
-    console.log("test");
     const fetchData = async () => {
-      selectedCategories;
       try {
         const inventoryResponse = await axios.get(
           "http://localhost:8080/api/inventories"
         );
 
-        console.log(inventoryResponse.data);
-
         setCategories(inventoryResponse.data);
 
-        // const warehouseResponse = await axios.get("/api/warehouses");
-        // setWarehouses(warehouseData);
+        const warehouseResponse = await axios.get(
+          "http://localhost:8080/api/warehouses"
+        );
+        console.log(warehouseResponse.data);
+        setWarehouses(warehouseResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -37,12 +38,7 @@ function EditInventoryItemPage() {
     fetchData();
   }, []);
 
-  // if (categories.length < 1) {
-  //   return <div>loading</div>;
-  // }
-
   const handleCategoryChange = (event) => {
-    // setSelectedCategory(event.target.value);
     const value = event.target.value;
     setSelectedCategory(value);
   };
@@ -52,85 +48,164 @@ function EditInventoryItemPage() {
   };
 
   const handleWarehouseChange = (event) => {
-    const warehouseId = event.target.value;
-    setSelectedWarehouse(warehouseId);
+    const warehouseName = event.target.value;
+    setSelectedWarehouse(warehouseName);
+  };
+
+  const onClose = () => {
+    console.log("Cancel button clicked");
+
+    setSelectedCategory("");
+    setStockStatus("");
+    setSelectedWarehouse("");
+  };
+
+  const onSave = async () => {
+    // Collect form data
+    const itemName = document.querySelector("input[type='text']").value;
+    const description = document.querySelector(
+      "textarea[name='description']"
+    ).value;
+
+    const itemData = {
+      itemName,
+      description,
+      category: selectedCategory,
+      stockStatus,
+      warehouse: selectedWarehouse,
+    };
+
+    // Validate required fields
+    if (
+      !itemName ||
+      !description ||
+      !selectedCategory ||
+      !stockStatus ||
+      !selectedWarehouse
+    ) {
+      console.error("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      // Send data to backend
+      const response = await axios.post(
+        "http://localhost:8080/api/inventories",
+        itemData
+      );
+
+      if (response.status === 201) {
+        console.log("Item saved successfully:", response.data);
+        // Optionally reset the form after saving
+        setSelectedCategory("");
+        setStockStatus("");
+        setSelectedWarehouse("");
+        document.querySelector("input[type='text']").value = "";
+        document.querySelector("textarea[name='description']").value = "";
+      } else {
+        console.error("Failed to save item:", response.status);
+      }
+    } catch (error) {
+      console.error("Error saving item:", error);
+    }
   };
 
   return (
     <>
-      <form>
-        <div>
+      <form className="editinventory">
+        <div className="editinventory__header">
           <img
-            src={chevronIcon}
+            src={arrowBack}
             alt="arrow icon"
-            className="editinventory_icon-chevron"
+            className="editinventory__icon-arrow"
           />
           <h1>Edit Inventory Item</h1>
         </div>
 
-        <h2>Item Details</h2>
+        <h2 className="editinventory__header-details">Item Details</h2>
 
-        <h3>Item Name</h3>
-        <input type="text"></input>
-        <h3>Description</h3>
-        <textarea name="description"> </textarea>
-        <h3>Category</h3>
-        <select
-          name="category"
-          id="category"
-          value={selectedCategory}
-          onChange={handleCategoryChange}
-        >
-          {Array.from(
-            new Set(categories.map((category) => category.category))
-          ).map((uniqueCategory, index) => (
-            <option key={index} value={uniqueCategory}>
-              {uniqueCategory}
-            </option>
-          ))}
-          {/* {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.category}
-            </option>
-          ))} */}
-        </select>
-        <h2>Item Availability</h2>
-        <h3>Status</h3>
-        <input
-          type="radio"
-          id="status-instock"
-          name="stockStatus"
-          value="In Stock"
-        ></input>
-        <label htmlFor="status-instock">In Stock</label>
-        <input
-          type="radio"
-          id="status-outofstock"
-          name="stockStatus"
-          value="Out of Stock"
-        ></input>
-        <label htmlFor="status-outofstock">Out of Stock</label>
-        <h3>Warehouse</h3>
-        <select
-          name="warehouse"
-          id="warehouse"
-          value={selectedCategory}
-          onChange={handleWarehouseChange}
-        >
-          {/* {warehouses.map((warehouse) => (
-            <option key={warehouse.warehouse} value={warehouse.warehouse}>
-              {warehouse.warehouse}
-            </option>
-          ))} */}
-        </select>
-        {/* <div className="buttons-container">
-          <CancelButton onClick={closeModal} />
-          <DeleteItemButton onClick={deleteItem} />
-        </div> */}
-        {/* <div className="buttons-container">
-          <CancelButton onClick={closeModal} />
-          <SaveItemButton onClick={saveItem} />
-        </div> */}
+        <div className="editinventory__name">
+          <h3>Item Name</h3>
+          <input className="editinventory__entry" type="text"></input>
+        </div>
+
+        <div className="editinventory__description">
+          <h3>Description</h3>
+          <textarea
+            className="editinventory__entry"
+            name="description"
+            defaultValue="text here"
+          ></textarea>
+        </div>
+
+        <div className="editinventory__category">
+          <h3>Category</h3>
+          <select
+            className="editinventory__entry-selection"
+            name="category"
+            id="category"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+          >
+            {Array.from(
+              new Set(categories.map((category) => category.category))
+            ).map((uniqueCategory, index) => (
+              <option key={index} value={uniqueCategory}>
+                {uniqueCategory}
+              </option>
+            ))}
+          </select>
+        </div>
+        <h2 className="editinventory__header-availability">
+          Item Availability
+        </h2>
+
+        <div className="editinventory__status">
+          <h3>Status</h3>
+          <div className="editinventory__status-container">
+            <div className="editinventory__status-selection">
+              <input
+                type="radio"
+                id="status-instock"
+                name="stockStatus"
+                value="In Stock"
+              ></input>
+              <label className="editinventory__status-label" htmlFor="status-instock">In Stock</label>
+            </div>
+            <div className="editinventory__status-selection">
+              <input
+                type="radio"
+                id="status-outofstock"
+                name="stockStatus"
+                value="Out of Stock"
+              ></input>
+              <label className="editinventory__status-label" htmlFor="status-outofstock">Out of Stock</label>
+            </div>
+          </div>
+        </div>
+
+        <div className="editinventory__warehouse">
+          <h3>Warehouse</h3>
+          <select
+            className="editinventory__entry-selection"
+            name="warehouse"
+            id="warehouse"
+            value={selectedWarehouse}
+            onChange={handleWarehouseChange}
+          >
+            {Array.from(
+              new Set(warehouses.map((warehouse) => warehouse.warehouse_name))
+            ).map((uniqueWarehouse, index) => (
+              <option key={index} value={uniqueWarehouse}>
+                {uniqueWarehouse}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="modal__buttons-container">
+          <CancelButton onClick={onClose} />
+          <SaveButton onClick={onSave} />
+        </div>
       </form>
     </>
   );
