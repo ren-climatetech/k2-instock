@@ -52,7 +52,7 @@ const WarehouseDetails = () => {
             {warehouse.warehouse_name}
           </h1>
         </div>
-        <EditItemButton />
+        <EditItemButton path={"/warehouse/:itemId/edit"} />
       </div>
       <div className="warehouse-details_details">
         <div className="warehouse-details_details__address">
