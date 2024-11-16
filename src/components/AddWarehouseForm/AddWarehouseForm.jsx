@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../AddWarehouseForm/AddWarehouseForm.scss";
 import { useNavigate } from "react-router-dom";
-import AddSubmitButton from "../Buttons/AddSubmitButton/AddSubmitButton";
+// import AddSubmitButton from "../Buttons/AddSubmitButton/AddSubmitButton";
+import AddButton from "../Buttons/AddButton/AddButton";
 import CancelButton from "../Buttons/CancelButton/CancelButton";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
@@ -110,7 +111,7 @@ const AddWarehouseForm = () => {
             placeholder="Warehouse Name"
             onChange={handleChange}
           />
-          {errors.warehouse_name && <span>{errors.warehouse_name}</span>}
+          {errors.warehouse_name && <span className="add-warehouse__form-wrapper_warehouse-input__error">{errors.warehouse_name}</span>}
           <label className="add-warehouse__form-wrapper_warehouse-label">
             Street Address
           </label>{" "}
@@ -122,7 +123,7 @@ const AddWarehouseForm = () => {
             placeholder="Street Address"
             onChange={handleChange}
           />
-          {errors.address && <span>{errors.address}</span>}
+          {errors.address && <span className="add-warehouse__form-wrapper_warehouse-input__error">{errors.address}</span>}
           <label className="add-warehouse__form-wrapper_warehouse-label">City</label>
           <input
             className="add-warehouse__form-wrapper_warehouse-input"
@@ -132,10 +133,10 @@ const AddWarehouseForm = () => {
             placeholder="City"
             onChange={handleChange}
           />
-          {errors.city && <span>{errors.city}</span>}
+          {errors.city && <span className="add-warehouse__form-wrapper_warehouse-input__error">{errors.city}</span>}
           <label className="add-warehouse__form-wrapper_warehouse-label">
             Country
-          </label>{" "}
+          </label>
           <input
             className="add-warehouse__form-wrapper_warehouse-input"
             type="text"
@@ -144,7 +145,7 @@ const AddWarehouseForm = () => {
             placeholder="Country"
             onChange={handleChange}
           />
-          {errors.country && <span>{errors.country}</span>}
+          {errors.country && <span className="add-warehouse__form-wrapper_warehouse-input__error">{errors.country}</span>}
         </div>
         <div className="add-warehouse__form-wrapper_contact">
           <h2 className="add-warehouse__form-wrapper_contact-title">Contact Details</h2>
@@ -159,7 +160,7 @@ const AddWarehouseForm = () => {
             placeholder="Contact Name"
             onChange={handleChange}
           />
-          {errors.contact_name && <span>{errors.contact_name}</span>}
+          {errors.contact_name && <span className="add-warehouse__form-wrapper_contact-input__error">{errors.contact_name}</span>}
           <label className="add-warehouse__form-wrapper_contact-label">
             Contact Position
           </label>
@@ -171,7 +172,7 @@ const AddWarehouseForm = () => {
             placeholder="Position"
             onChange={handleChange}
           />
-          {errors.contact_position && <span>{errors.contact_position}</span>}
+          {errors.contact_position && <span className="add-warehouse__form-wrapper_contact-input__error">{errors.contact_position}</span>}
           <label className="add-warehouse__form-wrapper_contact-label">
             Contact Phone
           </label>
@@ -183,7 +184,7 @@ const AddWarehouseForm = () => {
             placeholder="Phone Number"
             onChange={handleChange}
           />
-          {errors.contact_phone && <span>{errors.contact_phone}</span>}
+          {errors.contact_phone && <span className="add-warehouse__form-wrapper_contact-input__error">{errors.contact_phone}</span>}
           <label className="add-warehouse__form-wrapper_contact-label">
             Contact Email
           </label>
@@ -195,12 +196,12 @@ const AddWarehouseForm = () => {
             placeholder="Email"
             onChange={handleChange}
           />
-          {errors.contact_email && <span>{errors.contact_email}</span>}
+          {errors.contact_email && <span className="add-warehouse__form-wrapper_contact-input__error">{errors.contact_email}</span>}
         </div>
       </div> 
       <div className="add-warehouse__form-buttons">
         <CancelButton onClick={handleCancel}/>
-        <AddSubmitButton text="+Add Warehouse"/>
+        <AddButton text="+Add Warehouse" path="/warehouse/add" />
       </div>
     </form>
   );

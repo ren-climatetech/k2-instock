@@ -207,7 +207,7 @@
         }
 
         &::placeholder {
-          font-size: 13px;
+          font-size: .8125rem;
           line-height: 1.25rem;
           color: $secondary-slate;
 
@@ -246,4 +246,20 @@
       padding: 0 2.5rem;
     }
   }
+
+}
+
+.add-warehouse__form-wrapper_warehouse-input,
+.add-warehouse__form-wrapper_contact-input {
+  transition: border-color 0.3s ease; 
+
+  border: 1px solid $secondary-cloud;
+  
+  &__error {
+    border: $supporting-red; 
+    padding-left: 3rem;
+    font-size: .6875rem;
+    color: $supporting-red;
+  }
+
 }
