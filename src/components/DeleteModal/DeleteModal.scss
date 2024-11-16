@@ -1,0 +1,34 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  padding: 1rem;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+
+
+  &__buttons-container {
+    width: 100%;
+    // padding: 0 1rem;
+    display: flex;
+    align-self: flex-end;
+    gap: 1rem;
+    @include tablet {
+      justify-content: flex-end;
+      padding: 0 2rem;
+    }
+  }
+}
