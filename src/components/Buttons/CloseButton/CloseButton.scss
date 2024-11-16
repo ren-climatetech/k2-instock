@@ -1,0 +1,10 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.close-button{
+    border: 0;
+    background-color: transparent;
+    width: 1.5rem;
+    height: 1.5rem;
+    align-self: flex-end;
+}

@@ -1,20 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ArrowBack from "../../../assets/icons/arrow_back-24px.svg"
 import "../GoBackButton/GoBackButton.scss"
 
-const GoBackButton = () => {
-    const navigate = useNavigate();
-  
-    const handleGoBack = () => {
-      navigate("/warehouses"); // Redirect to the homepage
-    };
+const GoBackButton = ({path}) => {
   
     return (
-      <button className="go-back-button" onClick={handleGoBack}>
-        <img src={ArrowBack} alt="Arrow Go Back" />
-      </button>
-    );
-  };
+      <Link to={path} className="go-back-button">
+      <img src={ ArrowBack } alt="go back icon" />
+    </Link>
+  );
+};
 
 export default GoBackButton;
