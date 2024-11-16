@@ -13,9 +13,11 @@ function EditInventoryItemPage() {
 
   console.log("testing");
   console.log("testing");
+
   useEffect(() => {
     console.log("test");
     const fetchData = async () => {
+      selectedCategories;
       try {
         const inventoryResponse = await axios.get(
           "http://localhost:8080/api/inventories"
@@ -40,11 +42,9 @@ function EditInventoryItemPage() {
   // }
 
   const handleCategoryChange = (event) => {
-    const value = Array.from(
-      event.target.selecedOptions,
-      (option) => option.value
-    );
-    setSelectedCategories(value);
+    // setSelectedCategory(event.target.value);
+    const value = event.target.value;
+    setSelectedCategory(value);
   };
 
   const handleStockChange = (event) => {
