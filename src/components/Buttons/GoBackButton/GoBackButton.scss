@@ -6,4 +6,8 @@
     border: none;
     align-self: center;
     padding-top: .6rem;
+
+    @include tablet {
+        padding-top:.7rem;
+    }
 }

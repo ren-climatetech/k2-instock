@@ -8,8 +8,6 @@
     background-color: $primary-white;
     border-radius: 3px;
     box-shadow: $box-shadow;
-    // padding-left: 1.5rem;
-    // padding-right: 1.5rem;
     
     &-header {
         display: flex;
@@ -23,10 +21,26 @@
         padding-left: 1.5rem;
         padding-right: 1.5rem;
 
+        @include tablet {
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-bottom: 1.5rem;
+        }
+
+        @include desktop {
+            padding-left: 2.5rem;
+            padding-right: 2.5em;
+        }
+
         &-title {
             font-size: 1.25rem;
             line-height: 1.75rem;
             font-weight: 600;
+
+            @include tablet {
+                font-size: 2rem;
+                line-height: 2.5rem;
+            }
         }
     }
 }

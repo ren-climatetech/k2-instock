@@ -7,111 +7,224 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
-  &_warehouse {
+  
+  &-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid $secondary-cloud;
 
-    &-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      line-height: 1.75rem;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top:1.5rem;
+      margin-bottom: 1.5rem;
     }
 
-    &-label {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      line-height: 1.25rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.2rem;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+    @include desktop {
+      margin-top:2rem;
+      margin-bottom: 2rem;
     }
 
-    &-input {
-      height: 2.25rem;
-      border-radius: 20px;
-      border: 1px solid $secondary-cloud;
-      background-color: $primary-white;
-      padding-left: 1rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-      line-height: 1.25rem;
-      font-size: 13px;
-      margin-left: 1.5rem;
-      margin-right: 1.5rem;
+    &_warehouse {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid $secondary-cloud;
 
-      &::placeholder {
-        font-size: 13px;
-        line-height: 1.25rem;
-        color: $secondary-slate;
+      @include tablet {
+        flex-grow: 1;
+        border-right: 1px solid $secondary-cloud;
+        border-bottom: none;
       }
 
-      &:focus::placeholder {
-        opacity: 0;
+      &-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1.75rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        @include tablet {
+          font-size:1.5rem;
+          line-height: 2rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        @include desktop {
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
+        }
+
+      }
+
+      &-label {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        line-height: 1.25rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.2rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        @include tablet {
+          font-size: .875rem;
+          line-height: 1.375rem;
+          padding-top: 1.5rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        @include desktop {
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
+        }
+
+      }
+
+      &-input {
+        height: 2.25rem;
+        border-radius: 20px;
+        border: 1px solid $secondary-cloud;
+        background-color: $primary-white;
+        padding-left: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        line-height: 1.25rem;
+        font-size: 13px;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+
+        @include tablet {
+          height: 2.375rem;
+          margin-left: 2rem;
+          margin-right: 2rem;
+        }
+
+        @include desktop {
+          margin-left: 2.5rem;
+          margin-right: 2.5rem;
+        }
+
+        &::placeholder {
+          font-size: 13px;
+          line-height: 1.25rem;
+          color: $secondary-slate;
+
+          @include tablet {
+            font-size: .875rem;
+            line-height: 1.375rem;
+          }
+        }
+
+        &:focus::placeholder {
+          opacity: 0;
+        }
+      }
+    }
+
+    &_contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-bottom: 1.5rem;
+
+      @include tablet {
+        flex-grow: 1;
+      }
+
+      &-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1.75rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        @include tablet {
+          font-size:1.5rem;
+          line-height: 2rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        @include desktop {
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
+        }
+      }
+
+      &-label {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        line-height: 1.25rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.2rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        @include tablet {
+          font-size: .875rem;
+          line-height: 1.375rem;
+          padding-top: 1.5rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        @include desktop {
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
+        }
+
+      }
+
+      &-input {
+        height: 2.25rem;
+        border-radius: 20px;
+        border: 1px solid $secondary-cloud;
+        background-color: $primary-white;
+        padding-left: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        line-height: 1.25rem;
+        font-size: 13px;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+
+        @include tablet {
+          height: 2.375rem;
+          margin-left: 2rem;
+          margin-right: 2rem;
+        }
+
+        @include desktop {
+          margin-left: 2.5rem;
+          margin-right: 2.5rem;
+        }
+
+        &::placeholder {
+          font-size: 13px;
+          line-height: 1.25rem;
+          color: $secondary-slate;
+
+          @include tablet {
+            font-size: .875rem;
+            line-height: 1.375rem;
+          }
+        }
+
+        &:focus::placeholder {
+          opacity: 0;
+        }
       }
     }
   }
 
-  &_contact {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-bottom: 1.5rem;
-
-    &-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      line-height: 1.75rem;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-
-    &-label {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      line-height: 1.25rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.2rem;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-
-    &-input {
-      height: 2.25rem;
-      border-radius: 20px;
-      border: 1px solid $secondary-cloud;
-      background-color: $primary-white;
-      padding-left: 1rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-      line-height: 1.25rem;
-      font-size: 13px;
-      margin-left: 1.5rem;
-      margin-right: 1.5rem;
-
-      &::placeholder {
-        font-size: 13px;
-        line-height: 1.25rem;
-        color: $secondary-slate;
-      }
-
-      &:focus::placeholder {
-        opacity: 0;
-      }
-    }
-  }
-
-  &_buttons {
+  &-buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -127,6 +240,10 @@
     @include tablet {
       justify-content: flex-end;
       padding: 0 2rem;
+    }
+
+    @include desktop {
+      padding: 0 2.5rem;
     }
   }
 }
