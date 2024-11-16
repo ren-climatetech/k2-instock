@@ -7,11 +7,12 @@ import EditInventoryItemPage from "./pages/EditInventoryItemPage/EditInventoryIt
 import EditWarehouseItemPage from "./pages/EditWarehouseItemPage/EditWarehouseItemPage.jsx";
 import AddWarehousePage from "./pages/AddWarehousePage/AddWarehousePage.jsx";
 import AddInventoryPage from "./pages/AddInventoryPage/AddInventoryPage.jsx";
-
+import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
 import Header from "./components/Header/Header.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import { Flip, ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
 
         {/* Item Pages */}
         <Route path="/warehouse/:itemId" element={<WarehouseItemPage />} />
-        <Route path="/inventory/:itemId" element={<InventoryItemPage />} />
+        <Route path="/inventories/:itemId" element={<InventoryItemPage />} />
 
         {/* Edit Pages */}
         <Route
@@ -33,17 +34,30 @@ function App() {
           element={<EditWarehouseItemPage />}
         />
         <Route
-          path="/inventory/:itemId/edit"
+          path="/inventories/:itemId/edit"
           element={<EditInventoryItemPage />}
         />
 
         {/* Add Pages */}
         <Route path="/warehouse/add" element={<AddWarehousePage />} />
-        <Route path="/inventory/add" element={<AddInventoryPage />} />
+        <Route path="/inventories/add" element={<AddInventoryPage />} />
         {/* Not found */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Flip}
+      />
     </BrowserRouter>
   );
 }

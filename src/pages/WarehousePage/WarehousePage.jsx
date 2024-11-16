@@ -1,28 +1,13 @@
-import { useEffect, useState } from "react";
+
 import Search from "../../components/Search/Search";
 import WarehouseListHeader from "../../components/WarehouseListHeader/WarehouseListHeader";
 import "./WarehousePage.scss";
-import axios from "axios";
+
 import WarehousesList from "../../components/WarehousesList/WarehousesList";
 import AddLinkButton from "../../components/Buttons/AddLinkButton/AddLinkButton";
 
 
 function WarehousePage() {
-  const [warehouses, setWarehouses] = useState([]);
-
-  async function getWarehouses() {
-     try {
-       const {data}= await axios.get("http://localhost:8080/api/warehouses");
-       console.log(data);
-       setWarehouses(data);
-     } catch (error) {
-       console.error(error);
-     }
-  }
-  
-  useEffect(() => {
-    getWarehouses()
-  }, [])
 
   return (
     <section>
@@ -37,7 +22,7 @@ function WarehousePage() {
         </div>
         {/* Warehouse LIst Header */}
         <WarehouseListHeader />
-        <WarehousesList warehouses={warehouses} />
+        <WarehousesList />
       </div>
     </section>
   )
