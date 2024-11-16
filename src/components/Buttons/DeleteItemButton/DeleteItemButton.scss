@@ -1,0 +1,22 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.delete{
+    width: 50%;
+    padding: 0.5rem 0;
+    border-radius: 1.25rem;
+    border: 0;
+    background-color: $supporting-red;
+    color: $primary-white;
+    font-size: .8125rem;
+    transition: $transition;
+    &:hover, &:focus {
+        background-color: $primary-instock-black;
+    }
+    @include tablet{
+        width: 4.5rem;
+        font-size: .875rem;
+    }
+
+    
+}

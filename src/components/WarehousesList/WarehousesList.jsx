@@ -46,7 +46,7 @@ const WarehousesList = ({ warehouses }) => {
               </div>
               <div className="action-buttons">
                 <DeleteFromListButton />
-                <EditFromListButton path="/warehouse/:itemId/edit"/>
+                <EditFromListButton path={`/warehouse/${id}/edit`} />
               </div>
             </li>
           );
