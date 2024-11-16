@@ -3,9 +3,62 @@ import "./WarehousesList.scss";
 import DeleteFromListButton from "../Buttons/DeleteFromListButton.js/DeleteFromListButton";
 import EditFromListButton from "../Buttons/EditFromListButton/EditFromListButton";
 import chevronIcon from "../../assets/icons/chevron_right-24px.svg"
+import DeleteModal from "../DeleteModal/DeleteModal";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
-const WarehousesList = ({ warehouses }) => {
+const WarehousesList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+  const [warehouses, setWarehouses] = useState([]);
+
+  async function getWarehouses() {
+     try {
+       const {data}= await axios.get(`${baseUrl}/api/warehouses`);
+       console.log(data);
+       setWarehouses(data);
+     } catch (error) {
+       console.error(error);
+     }
+  }
+  
+  useEffect(() => {
+    getWarehouses()
+  }, [])
+
+  const openModal = (warehouse) => {
+    setSelectedWarehouse(warehouse);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedWarehouse(null);
+  };
+
+  const handleDelete = async () => {
+    if (selectedWarehouse) {
+      try {
+        const response = await axios.delete(`${baseUrl}/api/warehouses/${selectedWarehouse.id}`);
+
+        if (response.status === 204) {
+          getWarehouses();
+          closeModal();
+          toast.success(`${selectedWarehouse.warehouse_name} with ${selectedWarehouse.id} was successfully deleted.`);
+        } else {
+          toast.error(`${selectedWarehouse.warehouse_name} with ${selectedWarehouse.id} couldn't be deleted.`)
+        }
+      } catch (error) {
+        toast.error(`${selectedWarehouse.warehouse_name} with ${selectedWarehouse.id} couldn't be deleted. ${error.response?.data?.message}`)
+        console.error("Error:", error);
+      }
+    }
+     
+  };
   return (
+    <>
     <ul className="warehouses__list">
       {warehouses.map(
         ({
@@ -45,7 +98,7 @@ const WarehousesList = ({ warehouses }) => {
                 </div>
               </div>
               <div className="action-buttons">
-                <DeleteFromListButton />
+                <DeleteFromListButton onClick={() => openModal({ id, warehouse_name })}/>
                 <EditFromListButton path={`/warehouse/${id}/edit`} />
               </div>
             </li>
@@ -53,6 +106,16 @@ const WarehousesList = ({ warehouses }) => {
         }
       )}
     </ul>
+    {isModalOpen && (
+      <DeleteModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onDelete={handleDelete}
+          itemName={selectedWarehouse?.warehouse_name}
+          category={"Warehouse"}
+      />
+    )}
+    </>
   );
 };
 
