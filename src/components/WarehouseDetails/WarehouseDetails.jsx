@@ -30,6 +30,7 @@ const WarehouseDetails = () => {
         contact_phone: response.data.contact_phone,
         contact_email: response.data.contact_email,
       });
+      console.log(import.meta.env.VITE_BACKEND_URL);
     } catch (error) {
       console.error("Error fetching warehouse details:", error);
     }

@@ -1,5 +1,4 @@
 import React from 'react'
-import WarehouseDetails from '../../components/WarehouseDetails/WarehouseDetails '
 
 function AddWarehousePage() {
   return (
