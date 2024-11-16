@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 // import AddSubmitButton from "../Buttons/AddSubmitButton/AddSubmitButton";
 import AddButton from "../Buttons/AddButton/AddButton";
 import CancelButton from "../Buttons/CancelButton/CancelButton";
+import ErrorImage from "../../assets/icons/error-24px.svg"
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -107,19 +108,22 @@ const AddWarehouseForm = () => {
             className={`add-warehouse__form-wrapper_warehouse-input ${
               errors.warehouse_name ? "error" : ""
             }`}
-            // className="add-warehouse__form-wrapper_warehouse-input"
             type="text"
             name="warehouse_name"
             value={form.warehouse_name}
             placeholder="Warehouse Name"
             onChange={handleChange}
           />
-          {errors.warehouse_name && <span className="add-warehouse__form-wrapper_warehouse-input__error">{errors.warehouse_name}</span>}
+          {errors.warehouse_name && (
+            <span className="add-warehouse__form-wrapper_warehouse-input__error">
+              <img src={ErrorImage} alt="error icon" className="error-icon" />
+              {errors.warehouse_name}
+              </span>
+              )}
           <label className="add-warehouse__form-wrapper_warehouse-label">
             Street Address
           </label>
           <input
-            // className="add-warehouse__form-wrapper_warehouse-input"
             className={`add-warehouse__form-wrapper_warehouse-input ${
               errors.warehouse_name ? "error" : ""
             }`}
@@ -129,12 +133,16 @@ const AddWarehouseForm = () => {
             placeholder="Street Address"
             onChange={handleChange}
           />
-          {errors.address && <span className="add-warehouse__form-wrapper_warehouse-input__error">{errors.address}</span>}
+          {errors.address && (
+            <span className="add-warehouse__form-wrapper_warehouse-input__error">
+              <img src={ErrorImage} alt="error icon" className="error-icon" />
+              {errors.address}
+              </span>
+            )}
           <label className="add-warehouse__form-wrapper_warehouse-label">City</label>
           <input
-            // className="add-warehouse__form-wrapper_warehouse-input"
             className={`add-warehouse__form-wrapper_warehouse-input ${
-              errors.warehouse_name ? "error" : ""
+              errors.city ? "error" : ""
             }`}
             type="text"
             name="city"
@@ -142,14 +150,18 @@ const AddWarehouseForm = () => {
             placeholder="City"
             onChange={handleChange}
           />
-          {errors.city && <span className="add-warehouse__form-wrapper_warehouse-input__error">{errors.city}</span>}
+          {errors.city && (
+            <span className="add-warehouse__form-wrapper_warehouse-input__error">
+            <img src={ErrorImage} alt="error icon" className="error-icon" />
+              {errors.city}
+              </span>
+            )}
           <label className="add-warehouse__form-wrapper_warehouse-label">
             Country
           </label>
           <input
-            // className="add-warehouse__form-wrapper_warehouse-input"
             className={`add-warehouse__form-wrapper_warehouse-input ${
-              errors.warehouse_name ? "error" : ""
+              errors.country ? "error" : ""
             }`}
             type="text"
             name="country"
@@ -157,7 +169,12 @@ const AddWarehouseForm = () => {
             placeholder="Country"
             onChange={handleChange}
           />
-          {errors.country && <span className="add-warehouse__form-wrapper_warehouse-input__error">{errors.country}</span>}
+          {errors.country && (
+            <span className="add-warehouse__form-wrapper_warehouse-input__error">
+            <img src={ErrorImage} alt="error icon" className="error-icon" />
+              {errors.country}
+              </span>
+            )}
         </div>
         <div className="add-warehouse__form-wrapper_contact">
           <h2 className="add-warehouse__form-wrapper_contact-title">Contact Details</h2>
@@ -165,7 +182,6 @@ const AddWarehouseForm = () => {
             Contact Name
           </label>
           <input
-            // className="add-warehouse__form-wrapper_contact-input"
             className={`add-warehouse__form-wrapper_warehouse-input ${
               errors.warehouse_name ? "error" : ""
             }`}
@@ -175,12 +191,16 @@ const AddWarehouseForm = () => {
             placeholder="Contact Name"
             onChange={handleChange}
           />
-          {errors.contact_name && <span className="add-warehouse__form-wrapper_contact-input__error">{errors.contact_name}</span>}
+          {errors.contact_name && (
+            <span className="add-warehouse__form-wrapper_contact-input__error">
+            <img src={ErrorImage} alt="error icon" className="error-icon" />
+              {errors.contact_name}
+              </span>
+            )}
           <label className="add-warehouse__form-wrapper_contact-label">
             Contact Position
           </label>
           <input
-            // className="add-warehouse__form-wrapper_contact-input"
             className={`add-warehouse__form-wrapper_contact-input ${
               errors.warehouse_name ? "error" : ""
             }`}
@@ -190,12 +210,16 @@ const AddWarehouseForm = () => {
             placeholder="Position"
             onChange={handleChange}
           />
-          {errors.contact_position && <span className="add-warehouse__form-wrapper_contact-input__error">{errors.contact_position}</span>}
+          {errors.contact_position && (
+            <span className="add-warehouse__form-wrapper_contact-input__error">
+            <img src={ErrorImage} alt="error icon" className="error-icon" />
+              {errors.contact_position}
+              </span>
+            )}
           <label className="add-warehouse__form-wrapper_contact-label">
             Contact Phone
           </label>
           <input
-            // className="add-warehouse__form-wrapper_contact-input"
             className={`add-warehouse__form-wrapper_contact-input ${
               errors.warehouse_name ? "error" : ""
             }`}
@@ -205,12 +229,16 @@ const AddWarehouseForm = () => {
             placeholder="Phone Number"
             onChange={handleChange}
           />
-          {errors.contact_phone && <span className="add-warehouse__form-wrapper_contact-input__error">{errors.contact_phone}</span>}
+          {errors.contact_phone && (
+            <span className="add-warehouse__form-wrapper_contact-input__error">
+            <img src={ErrorImage} alt="error icon" className="error-icon" />
+              {errors.contact_phone}
+              </span>
+              )}
           <label className="add-warehouse__form-wrapper_contact-label">
             Contact Email
           </label>
           <input
-            // className="add-warehouse__form-wrapper_contact-input"
             className={`add-warehouse__form-wrapper_contact-input ${
               errors.warehouse_name ? "error" : ""
             }`}
@@ -220,7 +248,12 @@ const AddWarehouseForm = () => {
             placeholder="Email"
             onChange={handleChange}
           />
-          {errors.contact_email && <span className="add-warehouse__form-wrapper_contact-input__error">{errors.contact_email}</span>}
+          {errors.contact_email &&(
+            <span className="add-warehouse__form-wrapper_contact-input__error">
+            <img src={ErrorImage} alt="error icon" className="error-icon" />
+              {errors.contact_email}
+              </span>
+            )}
         </div>
       </div> 
       <div className="add-warehouse__form-buttons">

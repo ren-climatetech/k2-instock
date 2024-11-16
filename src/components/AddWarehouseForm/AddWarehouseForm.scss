@@ -252,14 +252,46 @@
 .add-warehouse__form-wrapper_warehouse-input,
 .add-warehouse__form-wrapper_contact-input {
   transition: border-color 0.3s ease; 
-
   border: 1px solid $secondary-cloud;
+}
+
+.add-warehouse__form-wrapper_warehouse-input.error,
+.add-warehouse__form-wrapper_contact-input.error {
+  border-color: $supporting-red;
+  height: 2.25rem;
+        border-radius: 20px;
+        padding-left: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        line-height: 1.25rem;
+        font-size: 13px;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
   
-  &__error {
-    border-color: $supporting-red; 
-    padding-left: 3rem;
+        @include tablet {
+          height: 2.375rem;
+          margin-left: 2rem;
+          margin-right: 2rem;
+        }
+
+        @include desktop {
+          margin-left: 2.5rem;
+          margin-right: 2.5rem;
+        }
+
+}
+
+.add-warehouse__form-wrapper_warehouse-input__error,
+.add-warehouse__form-wrapper_contact-input__error {
+    padding-left: 2.05rem;
+    padding-top: .3125rem;
     font-size: .6875rem;
     color: $supporting-red;
-  }
 
+  img.error-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.2rem;
+    vertical-align: middle;
+  }
 }

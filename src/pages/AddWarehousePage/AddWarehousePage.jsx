@@ -8,7 +8,7 @@ function AddWarehousePage() {
     <section className="layout">
       <div className="add-warehouse__wrapper">
         <div className="add-warehouse__wrapper-header">
-          <GoBackButton/>
+          <GoBackButton path="/warehouses"/>
           <h1 className="add-warehouse_wrapper-header-title">Add New Warehouse</h1>
         </div>
         <AddWarehouseForm />
