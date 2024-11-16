@@ -51,11 +51,11 @@ const InventoryList = ({ inventories }) => {
                   </p>
                 </div>
                 <div className="inventories__content inventories__content-quantity">
-                  <span className="inventories__label">Quantity</span>
+                  <span className="inventories__label">QTY</span>
                   <p>{quantity}</p>
                 </div>
                 <div className="inventories__content inventories__content-name">
-                  <span className="inventories__label">Warehouse name</span>
+                  <span className="inventories__label">Warehouse</span>
                   <p>{warehouse_name}</p>
                 </div>
               </div>
