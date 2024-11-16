@@ -20,7 +20,7 @@ const InventoryList = ({ inventories }) => {
           return (
             <li key={id} className="inventories__item">
               <div className="inventories__info-link">
-                <div className="inventories__content">
+                <div className="inventories__content inventories__content-item">
                   <span className="inventories__label">Inventory Item</span>
                   <Link
                     to={`/inventories/${id}`}
@@ -38,9 +38,9 @@ const InventoryList = ({ inventories }) => {
                   <span className="inventories__label">Category</span>
                   <p className="inventories__address">{category}</p>
                 </div>
-                <div className="inventories__content">
+                <div className="inventories__content inventories__content-status">
                   <span className="inventories__label">Status</span>
-                  <span
+                  <p
                     className={`inventories__content ${
                       status.toLowerCase() === "in stock"
                         ? "inventories__content in-stock"
@@ -48,7 +48,7 @@ const InventoryList = ({ inventories }) => {
                     }`}
                   >
                     {status}
-                  </span>
+                  </p>
                 </div>
                 <div className="inventories__content inventories__content-quantity">
                   <span className="inventories__label">Quantity</span>
