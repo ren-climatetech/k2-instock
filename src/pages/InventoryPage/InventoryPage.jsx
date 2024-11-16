@@ -34,7 +34,7 @@ function InventoryPage() {
           <h1 className="inventories__title">Inventory</h1>
           <div className="inventories__buttons">
             <Search />
-            <AddLinkButton text="+ Add New Item" path="/inventories/add" />
+            <AddLinkButton text="+ Add New Inventory" path="/inventories/add" />
           </div>
         </div>
         {/* Inventory List Header */}
