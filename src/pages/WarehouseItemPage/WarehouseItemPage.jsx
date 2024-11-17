@@ -10,6 +10,9 @@ import InventorySingleWarehouse from "../../components/InventorySingleWarehouse/
 // Use the base url from environment variables
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
+import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
+import "../../pages/WarehouseItemPage/WarehouseItemPage.scss";
+
 function WarehouseItemPage() {
   const { itemId } = useParams();
   const [warehouseItem, setWarehouseItem] = useState(null);
@@ -80,6 +83,9 @@ function WarehouseItemPage() {
         {/* Inventory List Header */}
         <InventorySingleWarehouseHeader />
         <InventorySingleWarehouse warehhouseId={itemId} />
+      </div>
+      <div className="layout warehouse-item__container">
+        <WarehouseDetails />
       </div>
     </section>
   );
