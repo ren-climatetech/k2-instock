@@ -47,7 +47,7 @@ const WarehouseDetails = () => {
     <section className="warehouse-details">
       <div className="warehouse-details__header">
         <div className="warehouse-details__header-wrapper">
-          <GoBackButton />
+          <GoBackButton path={"/warehouses"} />
           <h1 className="warehouse-details__header-wrapper_title">
             {warehouse.warehouse_name}
           </h1>

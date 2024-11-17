@@ -40,8 +40,8 @@
       }
 
       @include desktop {
+        padding-right: 2.5rem;
         padding-left: 2.5rem;
-        padding-right: 2.5em;
       }
 
       &_title {
@@ -67,6 +67,7 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 2rem;
+
     }
 
     &__address {
@@ -83,6 +84,13 @@
         width: 40%;
         border-bottom: 1.5rem;
         margin-top: 1.5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      @include tablet {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
       }
 
       &-subtitle {
@@ -163,6 +171,12 @@
         // padding-top: 1.5rem;
         border-bottom:none;
         margin-top: 1.5rem;
+      }
+
+      @include desktop {
+        margin-left: 2.5rem;
+        padding-left: 0;
+        padding-right: 0;
       }
 
       &_name {
