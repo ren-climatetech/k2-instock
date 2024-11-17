@@ -193,12 +193,11 @@
   background-color: $primary-white;
   padding-left: 1rem;
   padding-top: 0.5rem;
-  padding-bottom: 7.5rem;
+  padding-bottom: 4.5rem;
   line-height: 1.25rem;
   
 
   &::placeholder {
-    transform: translateY(-2.25rem);
     font-size: 0.8125rem;
     line-height: 1.25rem;
     color: $secondary-slate;
