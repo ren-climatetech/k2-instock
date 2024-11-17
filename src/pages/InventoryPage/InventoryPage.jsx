@@ -3,8 +3,8 @@ import Search from "../../components/Search/Search";
 import InventoryListHeader from "../../components/InventoryListHeader/InventoryListHeader";
 import "./InventoryPage.scss";
 import InventoryList from "../../components/InventoryList/InventoryList";
-
-
+// Use the base url from environment variables
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 function InventoryPage() {
   return (
@@ -20,7 +20,7 @@ function InventoryPage() {
         </div>
         {/* Inventory List Header */}
         <InventoryListHeader />
-        <InventoryList/>
+        <InventoryList />
       </div>
     </section>
   );
