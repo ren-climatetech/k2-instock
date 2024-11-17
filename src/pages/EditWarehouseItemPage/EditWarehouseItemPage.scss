@@ -1,0 +1,157 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.editwarehouse {
+  margin: 0 1rem;
+  background-color: $primary-white;
+  box-shadow: $box-shadow;
+  border-radius: 0.25rem;
+  // border: 2px solid red;
+
+  &__icon-arrow {
+    padding-right: 1rem;
+  }
+
+  &__header {
+    display: flex;
+    //   border: 2px solid red;
+    padding: 1.5rem 1rem;
+  }
+
+  &__header-details {
+    // border: 2px solid red;
+    // border-top: 1px solid $secondary-cloud;
+    padding: 1.5rem 1rem;
+
+    @include tablet {
+      padding-top: 0rem;
+    }
+  }
+
+  &__name {
+    // border: 2px solid red;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__street {
+    // border: 2px solid red;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__city {
+    // border: 2px solid red;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__country {
+    // border: 2px solid red;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+
+    @include tablet {
+      padding-bottom: 0rem;
+    }
+  }
+
+  &__entry {
+    width: 100%;
+    border-radius: 1rem;
+    border: 0.0625rem solid $secondary-cloud;
+    resize: none;
+    padding: 0.25rem 1rem;
+
+    &:hover,
+    &:focus {
+      background-color: $item-hover-color;
+    }
+  }
+
+  &__container {
+    border-top: 1px solid $secondary-cloud;
+
+    @include tablet {
+      display: flex;
+      // border: 2px solid red;
+      padding: 1rem 0;
+    }
+  }
+}
+
+.editwarehouse__container-item,
+.editcontact__container-item {
+  padding-bottom: 1rem;
+
+  @include tablet {
+    flex: 1;
+    max-width: 50%;
+    padding-bottom: 0rem;
+    //   border: 2px solid red;
+  }
+}
+.editcontact__container-item {
+  @include tablet {
+    border-left: 0.0625rem solid $secondary-cloud;
+  }
+}
+
+.editcontact {
+  &__header-details {
+    // border: 2px solid red;
+    border-top: 0.0625rem solid $secondary-cloud;
+    padding: 1.5rem 1rem;
+
+    @include tablet {
+      padding-top: 0rem;
+      border: none;
+    }
+  }
+
+  &__name {
+    // border: 2px solid red;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__position {
+    // border: 2px solid red;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__phone {
+    // border: 2px solid red;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__email {
+    //   border: 2px solid red;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+
+    @include tablet {
+      padding-bottom: 0rem;
+    }
+  }
+
+  &__entry {
+    width: 100%;
+    border-radius: 1rem;
+    border: 0.0625rem solid $secondary-cloud;
+    resize: none;
+    padding: 0.25rem 1rem;
+
+    &:hover,
+    &:focus {
+      background-color: $item-hover-color;
+    }
+  }
+}
+
+.modal__buttons-container {
+  padding: 1rem;
+  background-color: $bg-light-grey;
+}
