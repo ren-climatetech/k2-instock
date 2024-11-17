@@ -12,7 +12,7 @@ function InventoryPage() {
       <div className="layout inventories__container">
         {/* Inventory title and buttons */}
         <div className="inventories__heading-and_buttons">
-          <h1 className="inventories__title">Inventory</h1>
+          <h1 className="inventories__header">Inventory</h1>
           <div className="inventories__buttons">
             <Search />
             <AddLinkButton text="+ Add New Item" path="/inventories/add" />
