@@ -87,7 +87,7 @@
 
       &-input {
         height: 2.25rem;
-        border-radius: 20px;
+        border-radius: 1.25rem;
         border: 1px solid $secondary-cloud;
         background-color: $primary-white;
         padding-left: 1rem;
@@ -122,6 +122,10 @@
 
         &:focus::placeholder {
           opacity: 0;
+        }
+
+        &:focus {
+          border-color: $primary-instock-indigo;
         }
       }
     }
@@ -184,7 +188,7 @@
 
       &-input {
         height: 2.25rem;
-        border-radius: 20px;
+        border-radius: 1.25rem;
         border: 1px solid $secondary-cloud;
         background-color: $primary-white;
         padding-left: 1rem;
@@ -219,6 +223,10 @@
 
         &:focus::placeholder {
           opacity: 0;
+        }
+
+        &:focus {
+        border-color: $primary-instock-indigo;
         }
       }
     }

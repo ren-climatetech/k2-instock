@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../AddWarehouseForm/AddWarehouseForm.scss";
 import { useNavigate } from "react-router-dom";
-// import AddSubmitButton from "../Buttons/AddSubmitButton/AddSubmitButton";
 import AddButton from "../Buttons/AddButton/AddButton";
 import CancelButton from "../Buttons/CancelButton/CancelButton";
 import ErrorImage from "../../assets/icons/error-24px.svg"
@@ -10,7 +9,7 @@ import ErrorImage from "../../assets/icons/error-24px.svg"
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 const AddWarehouseForm = () => {
-  const navigate = useNavigate(); //Initializing navigation
+  const navigate = useNavigate(); 
   const [form, setForm] = useState({
     warehouse_name: "",
     address: "",
