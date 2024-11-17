@@ -71,7 +71,7 @@ function InventoryItemPage() {
                         : "out-of-stock"
                     }`}
                   >
-                    {inventoryItem.status}
+                    {inventoryItem.status.toUpperCase()}
                   </p>
                 </div>
                 <div className="item-info__warehouse">
