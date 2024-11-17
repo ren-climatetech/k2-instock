@@ -47,7 +47,34 @@ function WarehouseItemPage() {
             <EditItemButton path={`/warehouse/${warehouseItem.id}/edit`} />
           </div>
         </div>
-        <div className="item-info">hello</div>
+        <div>
+          <div className="warehouse-info">
+            {/* Left section */}
+            <div className="warehouse-info-left">
+              <div className="warehouse-info-left__address">
+                <p className="item-info__title">WAREHOUSE ADDRESS:</p>
+                <p>{warehouseItem.address}</p>
+                <p>
+                  {warehouseItem.city} , {warehouseItem.country}
+                </p>
+              </div>
+            </div>
+            <div className="warehouse-info-divider"></div>
+            {/* Right section */}
+            <div className="warehouse-info-right">
+              <div className="item-info__warehouse">
+                <p className="item-info__title">CONTACT NAME:</p>
+                <p>{warehouseItem.contact_name}</p>
+                <p>{warehouseItem.contact_position}</p>
+              </div>
+              <div className="item-info__warehouse">
+                <p className="item-info__title">CONTACT INFORMATION:</p>
+                <p>{warehouseItem.contact_phone}</p>
+                <p>{warehouseItem.contact_email}</p>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* Inventory List Header */}
         <InventorySingleWarehouseHeader />
         <InventorySingleWarehouse warehhouseId={itemId} />

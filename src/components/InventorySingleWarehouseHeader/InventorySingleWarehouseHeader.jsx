@@ -3,24 +3,24 @@ import sortIcon from "../../assets/icons/sort-icon-default.svg";
 
 const InventorySingleWarehouseHeader = () => {
   return (
-    <div className="inventories-header">
-      <div className="inventories-header__name-container">
-        <p className="inventories-header__name">
+    <div className="warehouse-inventory-header">
+      <div className="warehouse-inventory-header__name-container">
+        <p className="warehouse-inventory-header__name">
           Inventory Item
           <img src={sortIcon} alt="sort icon" />
         </p>
       </div>
-      <div className="inventories-header__name-container">
-        <p className="inventories-header__name">Category</p>
+      <div className="warehouse-inventory-header__name-container">
+        <p className="warehouse-inventory-header__name">Category</p>
         <img src={sortIcon} alt="sort icon" />
       </div>
-      <div className="inventories-header__name-container">
-        <p className="inventories-header__name">Status</p>
+      <div className="warehouse-inventory-header__name-container">
+        <p className="warehouse-inventory-header__name">Status</p>
 
         <img src={sortIcon} alt="sort icon" />
       </div>
-      <div className="inventories-header__name-container">
-        <p className="inventories-header__name">Quantity</p>
+      <div className="warehouse-inventory-header__name-container">
+        <p className="warehouse-inventory-header__name">Quantity</p>
         <img src={sortIcon} alt="sort icon" />
       </div>
 

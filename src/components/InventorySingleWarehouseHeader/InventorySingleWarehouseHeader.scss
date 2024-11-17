@@ -1,7 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.inventories-header {
+.warehouse-inventory-header {
   display: none;
   @include tablet {
     display: flex;
