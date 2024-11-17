@@ -192,7 +192,7 @@
   border: 1px solid $secondary-cloud;
   background-color: $primary-white;
   padding-left: 1rem;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
   padding-bottom: 0.5rem;
   line-height: 1.25rem;
 
@@ -228,7 +228,7 @@
   }
 }
 
-.add-inventory__form-wrapper-detatils_input,
+.add-inventory__form-wrapper-details_input,
 .add-inventory__form-wrapper-availability_input,
 .add-inventory__form-wrapper-details_description {
   transition: border-color 0.3s ease;
