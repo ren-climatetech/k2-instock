@@ -13,7 +13,6 @@ const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 function WarehouseItemPage() {
   const { itemId } = useParams();
   const [warehouseItem, setWarehouseItem] = useState(null);
-  const [inventory, setInventory] = useState(null);
 
   async function getSingleWarehouseItem() {
     try {
@@ -24,21 +23,8 @@ function WarehouseItemPage() {
     }
   }
 
-  // async function getInventoryOfWarehouse() {
-  //   try {
-  //     const { data } = await axios.get(
-  //       `${BASE_URL}/api/warehouses/${itemId}/inventories`
-  //     );
-  //     console.log(data);
-  //     setInventory(data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
   useEffect(() => {
     getSingleWarehouseItem();
-    // getInventoryOfWarehouse();
   }, [itemId]);
 
   if (!warehouseItem) {
