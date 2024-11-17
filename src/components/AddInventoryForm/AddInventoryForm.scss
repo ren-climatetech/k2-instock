@@ -220,14 +220,6 @@
   right: 1rem;
   transform: translateY(-50%);
   pointer-events: none;
-
-  @include tablet {
-    right: 2rem;
-  }
-
-  @include desktop {
-    right: 4rem;
-  }
 }
 
 input[type="number"]::-webkit-inner-spin-button,
