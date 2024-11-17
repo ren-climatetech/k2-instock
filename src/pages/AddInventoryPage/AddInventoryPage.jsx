@@ -1,9 +1,10 @@
 import React from 'react'
+import AddInventoryForm from '../../components/AddInventoryForm/AddInventoryForm'
 
 function AddInventoryPage() {
   return (
     <div>
-      Hello, I am an Add inventory page
+      <AddInventoryForm/>
     </div>
   )
 }
