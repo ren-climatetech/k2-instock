@@ -1,7 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.warehouses-header {
+.warehouse-inventory-header {
   display: none;
   @include tablet {
     display: flex;
@@ -11,21 +11,28 @@
     font-size: 0.75rem;
     color: $secondary-slate;
     background-color: $bg-light-grey;
-    margin-top: 0.7rem;
+    margin-top: 1.5rem;
   }
+
   &__name-container {
     @include tablet {
-      position: relative;
+      flex: 1;
       display: flex;
       align-items: center;
+      justify-content: flex-start;
     }
   }
 
   &__name {
-    @include tablet {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-    }
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .action-buttons {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 }
