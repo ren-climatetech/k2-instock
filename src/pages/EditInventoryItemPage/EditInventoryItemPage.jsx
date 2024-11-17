@@ -3,10 +3,12 @@ import CancelButton from "../../components/Buttons/CancelButton/CancelButton";
 import SaveButton from "../../components/Buttons/SaveButton/SaveButton";
 import axios from "axios";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
+import { useParams } from "react-router-dom";
 import arrowDropDown from "../../assets/icons/arrow_drop_down-24px.svg";
 import React, { useState, useEffect } from "react";
 
 function EditInventoryItemPage() {
+  const { itemId } = useParams();
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -15,28 +17,47 @@ function EditInventoryItemPage() {
   const [warehouses, setWarehouses] = useState([]);
   const [selectedWarehouse, setSelectedWarehouse] = useState("");
   const [selectedWarehouses, setSelectedWarehouses] = useState([]);
+  const [itemDetails, setItemDetails] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const inventoryResponse = await axios.get(
+          `http://localhost:8080/api/inventories/${itemId}`
+        );
+
+        const itemData = inventoryResponse.data;
+        setItemDetails(itemData);
+        setSelectedCategory(itemData.category);
+        setSelectedWarehouse(itemData.warehouse_name);
+
+        const allInventoriesResponse = await axios.get(
           "http://localhost:8080/api/inventories"
         );
+        const allInventories = allInventoriesResponse.data;
 
-        setCategories(inventoryResponse.data);
+        const uniqueCategories = [
+          ...new Set(allInventories.map((item) => item.category)),
+        ];
+        const uniqueWarehouses = [
+          ...new Set(allInventories.map((item) => item.warehouse_name)),
+        ];
 
-        const warehouseResponse = await axios.get(
-          "http://localhost:8080/api/warehouses"
-        );
-        console.log(warehouseResponse.data);
-        setWarehouses(warehouseResponse.data);
+        setCategories(uniqueCategories);
+        setWarehouses(uniqueWarehouses);
+
+        // const warehouseResponse = await axios.get(
+        //   "http://localhost:8080/api/warehouses/${itemId}"
+        // );
+        // console.log(warehouseResponse.data);
+        // setWarehouses(warehouseResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [itemId]);
 
   const handleCategoryChange = (event) => {
     const value = event.target.value;
@@ -61,7 +82,6 @@ function EditInventoryItemPage() {
   };
 
   const onSave = async () => {
-    // Collect form data
     const itemName = document.querySelector("input[type='text']").value;
     const description = document.querySelector(
       "textarea[name='description']"
@@ -96,7 +116,6 @@ function EditInventoryItemPage() {
 
       if (response.status === 201) {
         console.log("Item saved successfully:", response.data);
-        // Optionally reset the form after saving
         setSelectedCategory("");
         setStockStatus("");
         setSelectedWarehouse("");
@@ -128,7 +147,14 @@ function EditInventoryItemPage() {
 
             <div className="editinventory__name">
               <h3>Item Name</h3>
-              <input className="editinventory__entry" type="text"></input>
+              <input
+                className="editinventory__entry"
+                type="text"
+                value={itemDetails?.item_name || ""}
+                onChange={(e) =>
+                  setItemDetails({ ...itemDetails, item_name: e.target.value })
+                }
+              />
             </div>
 
             <div className="editinventory__description">
@@ -136,8 +162,14 @@ function EditInventoryItemPage() {
               <textarea
                 className="editinventory__entry"
                 name="description"
-                defaultValue="text here"
-              ></textarea>
+                value={itemDetails?.description || ""}
+                onChange={(e) =>
+                  setItemDetails({
+                    ...itemDetails,
+                    description: e.target.value,
+                  })
+                }
+              />
             </div>
 
             <div className="editinventory__category">
@@ -146,14 +178,12 @@ function EditInventoryItemPage() {
                 className="editinventory__entry-selection"
                 name="category"
                 id="category"
-                value={selectedCategory}
+                value={selectedCategory || ""}
                 onChange={handleCategoryChange}
               >
-                {Array.from(
-                  new Set(categories.map((category) => category.category))
-                ).map((uniqueCategory, index) => (
-                  <option key={index} value={uniqueCategory}>
-                    {uniqueCategory}
+                {categories.map((category, index) => (
+                  <option key={index} value={category}>
+                    {category}
                   </option>
                 ))}
               </select>
@@ -205,16 +235,12 @@ function EditInventoryItemPage() {
                 className="editinventory__entry-selection"
                 name="warehouse"
                 id="warehouse"
-                value={selectedWarehouse}
+                value={selectedWarehouse || ""}
                 onChange={handleWarehouseChange}
               >
-                {Array.from(
-                  new Set(
-                    warehouses.map((warehouse) => warehouse.warehouse_name)
-                  )
-                ).map((uniqueWarehouse, index) => (
-                  <option key={index} value={uniqueWarehouse}>
-                    {uniqueWarehouse}
+                {warehouses.map((warehouse, index) => (
+                  <option key={index} value={warehouse}>
+                    {warehouse}
                   </option>
                 ))}
               </select>
