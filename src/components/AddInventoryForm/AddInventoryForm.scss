@@ -193,8 +193,9 @@
   background-color: $primary-white;
   padding-left: 1rem;
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 7.5rem;
   line-height: 1.25rem;
+  
 
   &::placeholder {
     transform: translateY(-2.25rem);
@@ -228,6 +229,12 @@
   @include desktop {
     right: 4rem;
   }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .add-inventory__form-wrapper-details_input,

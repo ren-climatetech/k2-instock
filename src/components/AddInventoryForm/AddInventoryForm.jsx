@@ -221,8 +221,9 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
                   type="number"
                   name="quantity"
                   value={form.quantity}
-                  placeholder="1"
+                  placeholder="0"
                   onChange={handleChange}
+                  min="1"
                 />
                 {errors.quantity && (
                   <span className="add-inventory__form-wrapper-availability_input__error">
@@ -272,7 +273,7 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
         </div>
         <div className="add-inventory__form-buttons">
           <CancelButton onClick={handleCancel} />
-          <AddButton text="+ Add Inventory" path="/inventories/add" />
+          <AddButton text="+ Add Item" path="/inventories/add" />
         </div>
       </form>
     </>
