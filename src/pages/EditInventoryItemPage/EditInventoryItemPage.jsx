@@ -272,38 +272,35 @@ function EditInventoryItemPage() {
                     Out of Stock
                   </label>
                 </div>
-
-                
-                {form.status === "In Stock" && (
-                  
-                    <div className="editinventory__quantity">
-                      <h3>Quantity</h3>
-                      
-                      <input
-                        className={`add-inventory__form-wrapper-availability_input ${
-                          errors.quantity ? "error" : ""
-                        }`}
-                        type="number"
-                        name="quantity"
-                        value={form.quantity}
-                        placeholder="0"
-                        onChange={handleChange}
-                        min="1"
-                      />
-                      {errors.quantity && (
-                        <span className="add-inventory__form-wrapper-availability_input__error">
-                          <img
-                            src={ErrorImage}
-                            alt="error icon"
-                            className="error-icon"
-                          />
-                          {errors.quantity}
-                        </span>
-                      )}
-                    </div>
-                  
-                )}
               </div>
+
+              {form.status === "In Stock" && (
+                <div className="editinventory__quantity">
+                  <h3>Quantity</h3>
+
+                  <input
+                    className={`add-inventory__form-wrapper-availability_input ${
+                      errors.quantity ? "error" : ""
+                    }`}
+                    type="number"
+                    name="quantity"
+                    value={form.quantity}
+                    placeholder="0"
+                    onChange={handleChange}
+                    min="1"
+                  />
+                  {errors.quantity && (
+                    <span className="add-inventory__form-wrapper-availability_input__error">
+                      <img
+                        src={ErrorImage}
+                        alt="error icon"
+                        className="error-icon"
+                      />
+                      {errors.quantity}
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
 
             <div className="editinventory__warehouse">

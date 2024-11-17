@@ -8,6 +8,10 @@
   border-radius: 0.25rem;
   // border: 2px solid red;
 
+  @include desktop{
+    margin: 0 2.5rem;
+  }
+
   &__icon-arrow {
     padding-right: 1rem;
   }
@@ -64,6 +68,7 @@
   &__status-container {
     display: flex;
     gap: 1rem;
+    padding: 0rem 1rem;
 
     @include tablet {
       min-width: 50%;
@@ -78,9 +83,9 @@
     padding: 0 0.25rem;
   }
 
-  &__quantity{
-    padding: 1rem;
-     border: 2px solid red;
+  &__quantity {
+    padding: 1rem 0;
+    //  border: 2px solid red;
   }
 
   &__warehouse {
@@ -93,7 +98,8 @@
     border-radius: 1rem;
     border: 0.0625rem solid $secondary-cloud;
     resize: none;
-    padding: 0.25rem 1rem;
+    padding: 0.5rem 1rem;
+   
   }
   &__entry-selection {
     width: 100%;
@@ -108,18 +114,22 @@
 
   &__container {
     border-top: 1px solid $secondary-cloud;
+    margin: 1 rem;
 
     @include tablet {
       display: flex;
       // border: 2px solid red;
-      padding: 1rem 0;
+      padding: 1rem;
     }
   }
   &__container-item {
+    padding: 0 1rem;
+
     @include tablet {
       flex: 1;
       max-width: 50%;
       // border: 2px solid red;
+      // padding: 0 1rem;
     }
   }
 
