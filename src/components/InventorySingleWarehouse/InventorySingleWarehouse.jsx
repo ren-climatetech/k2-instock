@@ -1,23 +1,27 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "./InventoryList.scss";
+import "./InventorySingleWarehouse.scss";
 import DeleteFromListButton from "../Buttons/DeleteFromListButton.js/DeleteFromListButton";
 import EditFromListButton from "../Buttons/EditFromListButton/EditFromListButton";
 import chevronIcon from "../../assets/icons/chevron_right-24px.svg";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import DeleteModal from "../DeleteModal/DeleteModal";
+
 // Use the base url from environment variables
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
-const InventoryList = () => {
+const InventorySingleWarehouse = ({ warehhouseId }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedInventory, setSelectedInventory] = useState(null);
   const [inventories, setInventories] = useState([]);
 
   async function getInventories() {
     try {
-      const { data } = await axios.get(`${BASE_URL}/api/inventories`);
+      const { data } = await axios.get(
+        `${BASE_URL}/api/warehouses/${warehhouseId}/inventories`
+      );
+      console.log(data);
       setInventories(data);
     } catch (error) {
       console.error(error);
@@ -63,19 +67,12 @@ const InventoryList = () => {
       }
     }
   };
+
   return (
     <>
       <ul className="inventories__list">
         {inventories.map(
-          ({
-            id,
-            warehouse_name,
-            item_name,
-            description,
-            category,
-            status,
-            quantity,
-          }) => {
+          ({ id, warehouse_name, item_name, category, status, quantity }) => {
             return (
               <li key={id} className="inventories__item">
                 <div className="inventories__info-link">
@@ -110,19 +107,15 @@ const InventoryList = () => {
                     </p>
                   </div>
                   <div className="inventories__content inventories__content-quantity">
-                    <span className="inventories__label">QTY</span>
+                    <span className="inventories__label">Quantity</span>
                     <p>{quantity}</p>
-                  </div>
-                  <div className="inventories__content inventories__content-name">
-                    <span className="inventories__label">Warehouse</span>
-                    <p>{warehouse_name}</p>
                   </div>
                 </div>
                 <div className="action-buttons">
                   <DeleteFromListButton
                     onClick={() => openModal({ id, item_name })}
                   />
-                  <EditFromListButton path={`/inventories/${id}/edit`} />
+                  <EditFromListButton path={`/warehouse/${id}/edit`} />
                 </div>
               </li>
             );
@@ -142,4 +135,4 @@ const InventoryList = () => {
   );
 };
 
-export default InventoryList;
+export default InventorySingleWarehouse;

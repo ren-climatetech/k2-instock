@@ -15,7 +15,6 @@ function InventoryItemPage() {
   async function getSingleInventoryItem() {
     try {
       const { data } = await axios.get(`${BASE_URL}/api/inventories/${itemId}`);
-      console.log(data);
       setInventoryItem(data);
     } catch (error) {
       console.error(error);
@@ -41,7 +40,6 @@ function InventoryItemPage() {
           </div>
 
           <div className="inventories__buttons">
-            {/* gotta edit this path!!!!!!!!!!! */}
             <EditItemButton path={`/inventories/${itemId}/edit`} />
           </div>
         </div>
