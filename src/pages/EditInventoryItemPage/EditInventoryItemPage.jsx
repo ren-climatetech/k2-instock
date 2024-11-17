@@ -122,85 +122,104 @@ function EditInventoryItemPage() {
           <h1>Edit Inventory Item</h1>
         </div>
 
-        <h2 className="editinventory__header-details">Item Details</h2>
+        <div className="editinventory__container">
+          <div className="editinventory__container-item">
+            <h2 className="editinventory__header-details">Item Details</h2>
 
-        <div className="editinventory__name">
-          <h3>Item Name</h3>
-          <input className="editinventory__entry" type="text"></input>
-        </div>
-
-        <div className="editinventory__description">
-          <h3>Description</h3>
-          <textarea
-            className="editinventory__entry"
-            name="description"
-            defaultValue="text here"
-          ></textarea>
-        </div>
-
-        <div className="editinventory__category">
-          <h3>Category</h3>
-          <select
-            className="editinventory__entry-selection"
-            name="category"
-            id="category"
-            value={selectedCategory}
-            onChange={handleCategoryChange}
-          >
-            {Array.from(
-              new Set(categories.map((category) => category.category))
-            ).map((uniqueCategory, index) => (
-              <option key={index} value={uniqueCategory}>
-                {uniqueCategory}
-              </option>
-            ))}
-          </select>
-        </div>
-        <h2 className="editinventory__header-availability">
-          Item Availability
-        </h2>
-
-        <div className="editinventory__status">
-          <h3>Status</h3>
-          <div className="editinventory__status-container">
-            <div className="editinventory__status-selection">
-              <input
-                type="radio"
-                id="status-instock"
-                name="stockStatus"
-                value="In Stock"
-              ></input>
-              <label className="editinventory__status-label" htmlFor="status-instock">In Stock</label>
+            <div className="editinventory__name">
+              <h3>Item Name</h3>
+              <input className="editinventory__entry" type="text"></input>
             </div>
-            <div className="editinventory__status-selection">
-              <input
-                type="radio"
-                id="status-outofstock"
-                name="stockStatus"
-                value="Out of Stock"
-              ></input>
-              <label className="editinventory__status-label" htmlFor="status-outofstock">Out of Stock</label>
+
+            <div className="editinventory__description">
+              <h3>Description</h3>
+              <textarea
+                className="editinventory__entry"
+                name="description"
+                defaultValue="text here"
+              ></textarea>
+            </div>
+
+            <div className="editinventory__category">
+              <h3>Category</h3>
+              <select
+                className="editinventory__entry-selection"
+                name="category"
+                id="category"
+                value={selectedCategory}
+                onChange={handleCategoryChange}
+              >
+                {Array.from(
+                  new Set(categories.map((category) => category.category))
+                ).map((uniqueCategory, index) => (
+                  <option key={index} value={uniqueCategory}>
+                    {uniqueCategory}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
-        </div>
 
-        <div className="editinventory__warehouse">
-          <h3>Warehouse</h3>
-          <select
-            className="editinventory__entry-selection"
-            name="warehouse"
-            id="warehouse"
-            value={selectedWarehouse}
-            onChange={handleWarehouseChange}
-          >
-            {Array.from(
-              new Set(warehouses.map((warehouse) => warehouse.warehouse_name))
-            ).map((uniqueWarehouse, index) => (
-              <option key={index} value={uniqueWarehouse}>
-                {uniqueWarehouse}
-              </option>
-            ))}
-          </select>
+          <div className="editinventory__container-item editinventory__container-border">
+            <h2 className="editinventory__header-availability">
+              Item Availability
+            </h2>
+
+            <div className="editinventory__status">
+              <h3>Status</h3>
+              <div className="editinventory__status-container">
+                <div className="editinventory__status-selection">
+                  <input
+                    type="radio"
+                    id="status-instock"
+                    name="stockStatus"
+                    value="In Stock"
+                  ></input>
+                  <label
+                    className="editinventory__status-label"
+                    htmlFor="status-instock"
+                  >
+                    In Stock
+                  </label>
+                </div>
+                <div className="editinventory__status-selection">
+                  <input
+                    type="radio"
+                    id="status-outofstock"
+                    name="stockStatus"
+                    value="Out of Stock"
+                  ></input>
+                  <label
+                    className="editinventory__status-label"
+                    htmlFor="status-outofstock"
+                  >
+                    Out of Stock
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div className="editinventory__warehouse">
+              <h3>Warehouse</h3>
+              <select
+                className="editinventory__entry-selection"
+                name="warehouse"
+                id="warehouse"
+                value={selectedWarehouse}
+                onChange={handleWarehouseChange}
+              >
+                {Array.from(
+                  new Set(
+                    warehouses.map((warehouse) => warehouse.warehouse_name)
+                  )
+                ).map((uniqueWarehouse, index) => (
+                  <option key={index} value={uniqueWarehouse}>
+                    {uniqueWarehouse}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
         <div className="modal__buttons-container">
           <CancelButton onClick={onClose} />

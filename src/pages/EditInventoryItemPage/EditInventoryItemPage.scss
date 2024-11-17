@@ -20,8 +20,12 @@
 
   &__header-details {
     // border: 2px solid red;
-    border-top: 1px solid $secondary-cloud;
+    // border-top: 1px solid $secondary-cloud;
     padding: 1.5rem 1rem;
+
+    @include tablet {
+      padding-top: 0rem;
+    }
   }
 
   &__name {
@@ -37,14 +41,19 @@
 
   &__category {
     // border: 2px solid red;
-    padding: 1rem;
+    padding: 01rem;
   }
   &__header-availability {
     // border: 2px solid red;
+    border-top: 0.0625rem solid $secondary-cloud;
+    padding: 1.5rem 1rem;
 
-    padding: 1rem;
+    @include tablet {
+      padding-top: 0rem;
+      border: none;
+    }
 
-    border-top: 1px solid $secondary-cloud;
+    // border-top: 1px solid $secondary-cloud;
   }
 
   &__status {
@@ -55,6 +64,10 @@
   &__status-container {
     display: flex;
     gap: 1rem;
+
+    @include tablet {
+      min-width: 50%;
+    }
   }
   &__status-selection {
     // border: 2px solid red;
@@ -75,7 +88,7 @@
     border-radius: 1rem;
     border: 0.0625rem solid $secondary-cloud;
     resize: none;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 1rem;
   }
   &__entry-selection {
     width: 100%;
@@ -85,7 +98,30 @@
     background-image: url("../../assets/icons/arrow_drop_down-24px.svg");
     background-repeat: no-repeat;
     background-position: right 0.25rem center;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 1rem;
+  }
+
+  &__container {
+    border-top: 1px solid $secondary-cloud;
+
+    @include tablet {
+      display: flex;
+      // border: 2px solid red;
+      padding: 1rem 0;
+    }
+  }
+  &__container-item {
+    @include tablet {
+      flex: 1;
+      max-width: 50%;
+      // border: 2px solid red;
+    }
+  }
+
+  &__container-border {
+    @include tablet {
+      border-left: 0.0625rem solid $secondary-cloud;
+    }
   }
 }
 
