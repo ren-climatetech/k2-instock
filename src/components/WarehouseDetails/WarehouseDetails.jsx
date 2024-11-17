@@ -9,7 +9,7 @@ import "../WarehouseDetails/WarehouseDetails.scss";
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 const WarehouseDetails = () => {
-  const { id } = useParams();
+  const { itemId } = useParams();
   const [warehouse, setWarehouse] = useState({
     warehouse_name: "",
     address: "",
@@ -23,7 +23,7 @@ const WarehouseDetails = () => {
 
   const getWarehouse = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/warehouses/${id}`);
+      const response = await axios.get(`${BASE_URL}/api/warehouses/${itemId}`);
       setWarehouse({
         warehouse_name: response.data.warehouse_name,
         address: response.data.address,
@@ -41,7 +41,7 @@ const WarehouseDetails = () => {
 
   useEffect(() => {
     getWarehouse();
-  }, [id]);
+  }, [itemId]);
 
   return (
     <section className="warehouse-details">
@@ -59,9 +59,19 @@ const WarehouseDetails = () => {
           <h3 className="warehouse-details_details__address-subtitle">
             WAREHOUSE ADDRESS:
           </h3>
-          <p className="warehouse-details_details__address-output">
-            {warehouse.address}, {warehouse.city}, {warehouse.country}
-          </p>
+          <div className="warehouse-details_details__address_wrapper">
+            <p className="warehouse-details_details__address_wrapper-output">
+              {warehouse.address}, 
+            </p>
+            <div className="warehouse-details_details__address_wrapper_wrapper1">
+              <p className="warehouse-details_details__address_wrapper_wrapper1-output"> 
+                {warehouse.city}, 
+              </p>
+              <p className="warehouse-details_details__address_wrapper_wrapper1-output">
+              {warehouse.country}
+              </p>
+            </div>
+          </div>
         </div>
         <div className="warehouse-details_details__contact">
           <div className="warehouse-details_details__contact_name">
@@ -83,7 +93,7 @@ const WarehouseDetails = () => {
               {warehouse.contact_phone}
             </p>
             <p className="warehouse-details_details__contact_info-output">
-              {warehouse.contact_email}{" "}
+              {warehouse.contact_email}
             </p>
           </div>
         </div>
