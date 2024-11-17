@@ -18,6 +18,15 @@ function EditInventoryItemPage() {
   const [selectedWarehouse, setSelectedWarehouse] = useState("");
   const [selectedWarehouses, setSelectedWarehouses] = useState([]);
   const [itemDetails, setItemDetails] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [form, setForm] = useState({
+    item_name: "",
+    description: "",
+    category: "",
+    status: "In Stock",
+    quantity: "",
+    warehouse_id: "",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +39,7 @@ function EditInventoryItemPage() {
         setItemDetails(itemData);
         setSelectedCategory(itemData.category);
         setSelectedWarehouse(itemData.warehouse_name);
+        setStockStatus(itemData.status);
 
         const allInventoriesResponse = await axios.get(
           "http://localhost:8080/api/inventories"
@@ -45,12 +55,6 @@ function EditInventoryItemPage() {
 
         setCategories(uniqueCategories);
         setWarehouses(uniqueWarehouses);
-
-        // const warehouseResponse = await axios.get(
-        //   "http://localhost:8080/api/warehouses/${itemId}"
-        // );
-        // console.log(warehouseResponse.data);
-        // setWarehouses(warehouseResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -58,6 +62,40 @@ function EditInventoryItemPage() {
 
     fetchData();
   }, [itemId]);
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!form.item_name.trim()) {
+      newErrors.item_name = "Item name is invalid";
+    }
+    if (!form.description.trim()) {
+      newErrors.description = "Description is invalid";
+    }
+    if (!form.category.trim()) {
+      newErrors.category = "Category is invalid";
+    }
+    if (
+      form.status === "In Stock" &&
+      (!form.quantity ||
+        isNaN(form.quantity) ||
+        !Number.isFinite(Number(form.quantity)))
+    ) {
+      newErrors.quantity = "Quantity is invalid";
+    }
+    if (!form.warehouse_id.trim()) {
+      newErrors.warehouse_id = "Warehouse is invalid";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
+  };
 
   const handleCategoryChange = (event) => {
     const value = event.target.value;
@@ -91,7 +129,7 @@ function EditInventoryItemPage() {
       itemName,
       description,
       category: selectedCategory,
-      stockStatus,
+      stockStatus: form.status,
       warehouse: selectedWarehouse,
     };
 
@@ -109,7 +147,7 @@ function EditInventoryItemPage() {
 
     try {
       // Send data to backend
-      const response = await axios.post(
+      const response = await axios.put(
         "http://localhost:8080/api/inventories",
         itemData
       );
@@ -204,6 +242,10 @@ function EditInventoryItemPage() {
                     id="status-instock"
                     name="stockStatus"
                     value="In Stock"
+                    checked={form.status === "In Stock"}
+                    onChange={handleChange}
+                    // checked={stockStatus === "In Stock"}
+                    // onChange={handleStockChange}
                   ></input>
                   <label
                     className="editinventory__status-label"
@@ -218,6 +260,10 @@ function EditInventoryItemPage() {
                     id="status-outofstock"
                     name="stockStatus"
                     value="Out of Stock"
+                    checked={form.status === "Out of Stock"}
+                    onChange={handleChange}
+                    // checked={stockStatus === "Out of Stock"}
+                    // onChange={handleStockChange}
                   ></input>
                   <label
                     className="editinventory__status-label"
@@ -226,6 +272,37 @@ function EditInventoryItemPage() {
                     Out of Stock
                   </label>
                 </div>
+
+                
+                {form.status === "In Stock" && (
+                  
+                    <div className="editinventory__quantity">
+                      <h3>Quantity</h3>
+                      
+                      <input
+                        className={`add-inventory__form-wrapper-availability_input ${
+                          errors.quantity ? "error" : ""
+                        }`}
+                        type="number"
+                        name="quantity"
+                        value={form.quantity}
+                        placeholder="0"
+                        onChange={handleChange}
+                        min="1"
+                      />
+                      {errors.quantity && (
+                        <span className="add-inventory__form-wrapper-availability_input__error">
+                          <img
+                            src={ErrorImage}
+                            alt="error icon"
+                            className="error-icon"
+                          />
+                          {errors.quantity}
+                        </span>
+                      )}
+                    </div>
+                  
+                )}
               </div>
             </div>
 
