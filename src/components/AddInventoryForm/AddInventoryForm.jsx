@@ -4,8 +4,8 @@ import "../AddInventoryForm/AddInventoryForm.scss";
 import { useNavigate } from "react-router-dom";
 import AddButton from "../Buttons/AddButton/AddButton";
 import CancelButton from "../Buttons/CancelButton/CancelButton";
-import ErrorImage from "../../assets/icons/error-24px.svg"
-import ArrowIcon from "../../assets/icons/arrow_drop_down-24px.svg"
+import ErrorImage from "../../assets/icons/error-24px.svg";
+import ArrowIcon from "../../assets/icons/arrow_drop_down-24px.svg";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -80,7 +80,6 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
         const response = await axios.post(`${BASE_URL}/api/inventories`, form);
         if (response.status === 201) {
           console.log("Inventory item created successfully");
-          onInventoryAdded(response.data);
           navigate("/inventories");
         } else {
           console.log("Error creating inventory item");
@@ -104,171 +103,179 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
   };
 
   return (
-    <form className="add-inventory__form" onSubmit={handleSubmit}>
-      <div className="add-inventory__form-details">
-        <h2 className="add-inventory__form-details_title">
-          Item Details
-        </h2>
-        <label className="add-inventory__form-details_label">
-          Item Name
-        </label>
-        <input
-          className={`add-inventory__form-details_input ${
-            errors.item_name ? "error" : ""
-          }`}
-          type="text"
-          name="item_name"
-          value={form.item_name}
-          placeholder="Item Name"
-          onChange={handleChange}
-        />
-        {errors.item_name && (
-          <span className="add-inventory__form-details_input__error"><img src={ErrorImage} alt="error icon" className="error-icon"/>
-            {errors.item_name}
-          </span>
-        )}
-        <label className="add-inventory__form-details_label">
-          Description
-        </label>
-        <input
-          className={`add-inventory__form-details_input ${
-            errors.description ? "error" : ""
-          }`}
-          type="text"
-          name="description"
-          value={form.description}
-          placeholder="Description"
-          onChange={handleChange}
-        />
-        {errors.description && (
-          <span className="add-inventory__form-details_input__error"><img src={ErrorImage} alt="error icon" className="error-icon"/>
-            {errors.description}
-          </span>
-        )}
-        <label className="add-inventory__form-details_label">
-          Category
-        </label>
-        <div className="add-inventory__dropdown-container">
-          <select
-            className={`add-inventory__form-details_input ${
-              errors.category ? "error" : ""
-            }`}
-            name="category"
-            value={form.category}
-            onChange={handleChange}
-          >
-            <option value="">Select Category</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-          <img
-            src={ArrowIcon}
-            alt="dropdown arrow"
-            className="add-inventory__dropdown-icon"
-          />
-        </div>
-        {errors.category && (
-          <span className="add-inventory__form-details_input__error"><img src={ErrorImage} alt="error icon" className="error-icon"/>
-            {errors.category}
-          </span>
-        )}
-      </div>
-      <div className="add-inventory__form-availability">  
-        <h2 className="add-inventory__form-availability_title">
-          Item Availability
-        </h2>
-        <label className="add-inventory__form-availability_label">
-          Status
-        </label>
-        <div className="add-inventory__form-availability_status-radio-group">
-          {" "}
-          <label>
-            {" "}
+    <>
+      <form className="add-inventory__form" onSubmit={handleSubmit}>
+        <div className="add-inventory__form-wrapper">
+          <div className="add-inventory__form-wrapper-details">
+            <h2 className="add-inventory__form-wrapper-details_title">Item Details</h2>
+            <label className="add-inventory__form-wrapper-details_label">Item Name</label>
             <input
-              className="add-inventory__form-availability_input"
-              type="radio"
-              name="status"
-              value="In Stock"
-              checked={form.status === "In Stock"}
-              onChange={handleChange}
-            />{" "}
-            In Stock{" "}
-          </label>{" "}
-          <label>
-            {" "}
-            <input
-              className="add-inventory__form-availability_input"
-              type="radio"
-              name="status"
-              value="Out of Stock"
-              checked={form.status === "Out of Stock"}
-              onChange={handleChange}
-            />{" "}
-            Out of Stock{" "}
-          </label>{" "}
-        </div>
-        {form.status === "In Stock" && (
-          <>
-            <label className="add-inventory__form-availability_label">
-              Quantity
-            </label>
-            <input
-              className={`add-inventory__form-availability_input ${
-                errors.quantity ? "error" : ""
+              className={`add-inventory__form-wrapper-details_input ${
+                errors.item_name ? "error" : ""
               }`}
-              type="number"
-              name="quantity"
-              value={form.quantity}
-              placeholder="Quantity"
+              type="text"
+              name="item_name"
+              value={form.item_name}
+              placeholder="Item Name"
               onChange={handleChange}
             />
-            {errors.quantity && (
-              <span className="add-inventory__form-availability_input__error"><img src={ErrorImage} alt="error icon" className="error-icon"/>
-                {errors.quantity}
+            {errors.item_name && (
+              <span className="add-inventory__form-wrapper-details_input__error">
+                <img src={ErrorImage} alt="error icon" className="error-icon" />
+                {errors.item_name}
               </span>
             )}
-          </>
-        )}
-        <label className="add-inventory__form-availability_label">
-          Warehouse
-        </label>
-        <div className="add-inventory__dropdown-container">
-          <select
-            className={`add-inventory__form-availability_input ${
-              errors.item_name ? "error" : ""
-            }`}
-            name="warehouse_id"
-            value={form.warehouse_id}
-            onChange={handleChange}
-          >
-            <option value="">Select Warehouse</option>
-            {warehouses.map((warehouse) => (
-              <option key={warehouse.id} value={warehouse.id}>
-                {warehouse.warehouse_name}
-              </option>
-            ))}
-          </select>
-          <img
-            src={ArrowIcon}
-            alt="dropdown arrow"
-            className="add-inventory__dropdown-icon"
-          />
-        </div>  
-        {errors.warehouse_id && (
-          <span className="add-inventory__form-availability_input__error"><img src={ErrorImage} alt="error icon" className="error-icon"/>
-            {errors.warehouse_id}
-          </span>
-        )}
-      </div>
-      
-      <div className="add-inventory__form-buttons">
-        <CancelButton onClick={handleCancel} />
-        <AddButton text="+Add Inventory" path="/inventory/add" />
-      </div>
-    </form>
+            <label className="add-inventory__form-wrapper-details_label">
+              Description
+            </label>
+            <input
+              className={`add-inventory__form-wrapper-details_description ${
+                errors.description ? "error" : ""
+              }`}
+              type="text"
+              name="description"
+              value={form.description}
+              placeholder="Please enter a brief item description..."
+              onChange={handleChange}
+            />
+            {errors.description && (
+              <span className="add-inventory__form-wrapper-details_description__error">
+                <img src={ErrorImage} alt="error icon" className="error-icon" />
+                {errors.description}
+              </span>
+            )}
+            <label className="add-inventory__form-wrapper-details_label">Category</label>
+            <div className="add-inventory__dropdown-container">
+              <select
+                className={`add-inventory__form-wrapper-details_input ${
+                  errors.category ? "error" : ""
+                }`}
+                name="category"
+                value={form.category}
+                onChange={handleChange}
+                placeholder="Please select"
+              >
+                <option value="">Select Category</option>
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+              <img
+                src={ArrowIcon}
+                alt="dropdown arrow"
+                className="add-inventory__dropdown-icon"
+              />
+            </div>
+            {errors.category && (
+              <span className="add-inventory__form-wrapper-details_input__error">
+                <img src={ErrorImage} alt="error icon" className="error-icon" />
+                {errors.category}
+              </span>
+            )}
+          </div>
+          <div className="add-inventory__form-wrapper-availability">
+            <h2 className="add-inventory__form-wrapper-availability_title">
+              Item Availability
+            </h2>
+            <label className="add-inventory__form-wrapper-availability_label">
+              Status
+            </label>
+            <div className="add-inventory__form-wrapper-availability_status-radio-group">
+              {" "}
+              <label>
+                {" "}
+                <input
+                  className="add-inventory__form-wrapper-availability_status-radio-group_input1"
+                  type="radio"
+                  name="status"
+                  value="In Stock"
+                  checked={form.status === "In Stock"}
+                  onChange={handleChange}
+                />{" "}
+                In Stock{" "}
+              </label>{" "}
+              <label>
+                {" "}
+                <input
+                  className="add-inventory__form-wrapper-availability_status-radio-group_input1"
+                  type="radio"
+                  name="status"
+                  value="Out of Stock"
+                  checked={form.status === "Out of Stock"}
+                  onChange={handleChange}
+                />{" "}
+                Out of Stock{" "}
+              </label>{" "}
+            </div>
+            {form.status === "In Stock" && (
+              <>
+                <label className="add-inventory__form-wrapper-availability_label">
+                  Quantity
+                </label>
+                <input
+                  className={`add-inventory__form-wrapper-availability_input ${
+                    errors.quantity ? "error" : ""
+                  }`}
+                  type="number"
+                  name="quantity"
+                  value={form.quantity}
+                  placeholder="1"
+                  onChange={handleChange}
+                />
+                {errors.quantity && (
+                  <span className="add-inventory__form-wrapper-availability_input__error">
+                    <img
+                      src={ErrorImage}
+                      alt="error icon"
+                      className="error-icon"
+                    />
+                    {errors.quantity}
+                  </span>
+                )}
+              </>
+            )}
+            <label className="add-inventory__form-wrapper-availability_label">
+              Warehouse
+            </label>
+            <div className="add-inventory__dropdown-container">
+              <select
+                className={`add-inventory__form-wrapper-availability_input ${
+                  errors.item_name ? "error" : ""
+                }`}
+                name="warehouse_id"
+                value={form.warehouse_id}
+                onChange={handleChange}
+                placeholder="Select Warehouse"
+              >
+                <option value="">Select Warehouse</option>
+                {warehouses.map((warehouse) => (
+                  <option key={warehouse.id} value={warehouse.id}>
+                    {warehouse.warehouse_name}
+                  </option>
+                ))}
+              </select>
+              <img
+                src={ArrowIcon}
+                alt="dropdown arrow"
+                className="add-inventory__dropdown-icon"
+              />
+            </div>
+            {errors.warehouse_id && (
+              <span className="add-inventory__form-wrapper-availability_input__error">
+                <img src={ErrorImage} alt="error icon" className="error-icon" />
+                {errors.warehouse_id}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="add-inventory__form-buttons">
+          <CancelButton onClick={handleCancel} />
+          <AddButton text="+ Add Inventory" path="/inventories/add" />
+        </div>
+      </form>
+    </>
   );
 };
 

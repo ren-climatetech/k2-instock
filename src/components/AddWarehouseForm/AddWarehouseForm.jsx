@@ -257,7 +257,7 @@ const AddWarehouseForm = () => {
       </div> 
       <div className="add-warehouse__form-buttons">
         <CancelButton onClick={handleCancel}/>
-        <AddButton text="+Add Warehouse" path="/warehouse/add" />
+        <AddButton text="+ Add Warehouse" path="/warehouse/add" />
       </div>
     </form>
   );
