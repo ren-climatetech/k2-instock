@@ -192,16 +192,18 @@
   border: 1px solid $secondary-cloud;
   background-color: $primary-white;
   padding-left: 1rem;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   line-height: 1.25rem;
 
   &::placeholder {
+    transform: translateY(-2.25rem);
     font-size: 0.8125rem;
     line-height: 1.25rem;
     color: $secondary-slate;
 
     @include tablet {
+      height: 7.5rem;
       font-size: 0.875rem;
       line-height: 1.375rem;
     }
