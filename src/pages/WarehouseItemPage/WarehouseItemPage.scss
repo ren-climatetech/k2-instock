@@ -8,9 +8,18 @@
   border-top: 1px solid $secondary-cloud;
   font-size: 0.8125rem;
   font-weight: 400;
+  padding-bottom: 0;
 
   @include tablet {
     display: flex;
+  }
+  &__address {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+    }
   }
 
   &-divider {

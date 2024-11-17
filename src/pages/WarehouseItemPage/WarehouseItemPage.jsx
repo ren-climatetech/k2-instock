@@ -53,10 +53,12 @@ function WarehouseItemPage() {
             <div className="warehouse-info-left">
               <div className="warehouse-info-left__address">
                 <p className="item-info__title">WAREHOUSE ADDRESS:</p>
-                <p>{warehouseItem.address}</p>
-                <p>
-                  {warehouseItem.city} , {warehouseItem.country}
-                </p>
+                <div className="warehouse-info__address">
+                  <p>{warehouseItem.address},&nbsp;</p>
+                  <p>
+                    {warehouseItem.city} , {warehouseItem.country}
+                  </p>
+                </div>
               </div>
             </div>
             <div className="warehouse-info-divider"></div>
