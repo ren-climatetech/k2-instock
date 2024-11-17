@@ -13,12 +13,12 @@ function WarehousePage() {
   const [warehouses, setWarehouses] = useState([]);
   const [filteredWarehouses, setFilteredWarehouses] = useState([]);
 
-  // Fetch warehouses from the API
+  // get warehouses from the server
   async function fetchWarehouses() {
     try {
       const { data } = await axios.get(`${baseUrl}/api/warehouses`);
       setWarehouses(data);
-      setFilteredWarehouses(data); // Set initial filtered list
+      setFilteredWarehouses(data);
     } catch (error) {
       console.error("Error fetching warehouses:", error);
     }
@@ -29,7 +29,7 @@ function WarehousePage() {
   }, []);
 
   useEffect(() => {
-    // Filter warehouses based on query
+    // filter warehouses based on query
     const filtered = warehouses.filter(
       ({ warehouse_name, address, city, contact_email, contact_phone }) =>
         warehouse_name.toLowerCase().includes(query.toLowerCase()) ||

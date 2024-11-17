@@ -32,7 +32,7 @@ const WarehousesList = ({ warehouses, setWarehouses }) => {
         );
 
         if (response.status === 204) {
-          // Remove the deleted warehouse from the state
+          // remove the deleted warehouse from the state
           setWarehouses((prevWarehouses) =>
             prevWarehouses.filter(
               (warehouse) => warehouse.id !== selectedWarehouse.id
