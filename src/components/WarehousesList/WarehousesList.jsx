@@ -125,7 +125,7 @@ const WarehousesList = () => {
           onClose={closeModal}
           onDelete={handleDelete}
           itemName={selectedWarehouse?.warehouse_name}
-          category={"Warehouse"}
+          category={"warehouse"}
         />
       )}
     </>
