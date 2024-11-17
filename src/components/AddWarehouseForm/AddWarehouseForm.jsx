@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import AddButton from "../Buttons/AddButton/AddButton";
 import CancelButton from "../Buttons/CancelButton/CancelButton";
 import ErrorImage from "../../assets/icons/error-24px.svg"
+import { toast } from "react-toastify";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -68,12 +69,15 @@ const AddWarehouseForm = () => {
       try {
         const response = await axios.post(`${BASE_URL}/api/warehouses`, form);
         if (response.status === 201) {
+          toast.success(`Warehouse ${form.warehouse_name} was successfully created.`)
+          navigate("/warehouses")
           console.log("Warehouse created successfully");
-          navigate("/warehouses");
         } else {
+          toast.error(`Error creating warehouse`)
           console.log("Error creating warehouse");
         }
       } catch (error) {
+        toast.error(`Error creating warehouse. ${error.response?.data?.message}`)
         console.error("Error creating warehouse:", error);
       }
     }
