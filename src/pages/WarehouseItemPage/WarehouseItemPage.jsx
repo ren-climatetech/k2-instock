@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
+import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
+import "../../pages/WarehouseItemPage/WarehouseItemPage.scss"
 
 function WarehouseItemPage() {
   return (
-    <div>
-      Hello, I am a Warehouse Item Page
+    <div className="layout warehouse-item__container">
+      <WarehouseDetails />
     </div>
-  )
+  );
 }
 
-export default WarehouseItemPage
+export default WarehouseItemPage;

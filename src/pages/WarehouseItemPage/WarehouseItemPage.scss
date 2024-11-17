@@ -1,0 +1,19 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.warehouse-item{
+    &__container{
+        padding-bottom: 0.25rem;
+        background-color: $primary-white;
+        border-radius: 3px;
+        box-shadow: $box-shadow;
+        
+        @include tablet {
+        padding-bottom: 0.5rem;
+        }
+
+        @include desktop {
+        padding-bottom: 0.75rem;
+        }
+    }
+}
