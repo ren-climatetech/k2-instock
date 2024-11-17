@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import AddButton from "../Buttons/AddButton/AddButton";
 import CancelButton from "../Buttons/CancelButton/CancelButton";
 import ErrorImage from "../../assets/icons/error-24px.svg"
+import ArrowIcon from "../../assets/icons/arrow_drop_down-24px.svg"
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -147,21 +148,28 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
         <label className="add-inventory__form-details_label">
           Category
         </label>
-        <select
-          className={`add-inventory__form-details_input ${
-            errors.category ? "error" : ""
-          }`}
-          name="category"
-          value={form.category}
-          onChange={handleChange}
-        >
-          <option value="">Select Category</option>
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
+        <div className="add-inventory__dropdown-container">
+          <select
+            className={`add-inventory__form-details_input ${
+              errors.category ? "error" : ""
+            }`}
+            name="category"
+            value={form.category}
+            onChange={handleChange}
+          >
+            <option value="">Select Category</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+          <img
+            src={ArrowIcon}
+            alt="dropdown arrow"
+            className="add-inventory__dropdown-icon"
+          />
+        </div>
         {errors.category && (
           <span className="add-inventory__form-details_input__error"><img src={ErrorImage} alt="error icon" className="error-icon"/>
             {errors.category}
@@ -218,7 +226,7 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
               onChange={handleChange}
             />
             {errors.quantity && (
-              <span className="add-inventory__form-availability_input__error">
+              <span className="add-inventory__form-availability_input__error"><img src={ErrorImage} alt="error icon" className="error-icon"/>
                 {errors.quantity}
               </span>
             )}
@@ -227,21 +235,28 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
         <label className="add-inventory__form-availability_label">
           Warehouse
         </label>
-        <select
-          className={`add-inventory__form-availability_input ${
-            errors.item_name ? "error" : ""
-          }`}
-          name="warehouse_id"
-          value={form.warehouse_id}
-          onChange={handleChange}
-        >
-          <option value="">Select Warehouse</option>
-          {warehouses.map((warehouse) => (
-            <option key={warehouse.id} value={warehouse.id}>
-              {warehouse.warehouse_name}
-            </option>
-          ))}
-        </select>
+        <div className="add-inventory__dropdown-container">
+          <select
+            className={`add-inventory__form-availability_input ${
+              errors.item_name ? "error" : ""
+            }`}
+            name="warehouse_id"
+            value={form.warehouse_id}
+            onChange={handleChange}
+          >
+            <option value="">Select Warehouse</option>
+            {warehouses.map((warehouse) => (
+              <option key={warehouse.id} value={warehouse.id}>
+                {warehouse.warehouse_name}
+              </option>
+            ))}
+          </select>
+          <img
+            src={ArrowIcon}
+            alt="dropdown arrow"
+            className="add-inventory__dropdown-icon"
+          />
+        </div>  
         {errors.warehouse_id && (
           <span className="add-inventory__form-availability_input__error"><img src={ErrorImage} alt="error icon" className="error-icon"/>
             {errors.warehouse_id}
