@@ -1,0 +1,192 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.editinventory {
+  background-color: $primary-white;
+  box-shadow: $box-shadow;
+  border-radius: 0.25rem;
+
+  &__icon-arrow {
+    padding-right: 1rem;
+    display: flex;
+    justify-content: center;
+  
+  }
+
+  &__header {
+    display: flex;
+    padding: 1.5rem 1rem;
+  }
+
+  &__header-details {
+    padding: 1.5rem 1rem;
+
+    @include tablet {
+      padding-top: 0rem;
+    }
+  }
+
+  &__name {
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+  }
+
+  &__description {
+    padding: 0 1rem;
+  }
+
+  &__category {
+    padding: 01rem;
+  }
+  &__header-availability {
+    border-top: 0.0625rem solid $secondary-cloud;
+    padding: 1.5rem 1rem;
+
+    @include tablet {
+      padding-top: 0rem;
+      border: none;
+    }
+  }
+
+  &__status {
+    padding: 0 1rem;
+  }
+
+  &__status-container {
+    display: flex;
+    flex: 1;
+
+    @include tablet {
+      min-width: 50%;
+    }
+  }
+  &__status-selection {
+    width: 50%;
+  }
+  &__status-label {
+    padding: 0 0.25rem;
+  }
+
+  &__quantity {
+    padding: 1rem 0;
+  }
+
+  &__warehouse {
+    padding: 1rem;
+  }
+
+  &__entry {
+    width: 100%;
+    border-radius: 1.25rem;
+    border: 0.0625rem solid $secondary-cloud;
+    resize: none;
+    padding: 0.5rem 1rem;
+    margin-top: 0.25rem;
+  }
+  &__entry-selection {
+    width: 100%;
+    border-radius: 1.25rem;
+    border: 0.0625rem solid $secondary-cloud;
+    appearance: none;
+    background-image: url("../../assets/icons/arrow_drop_down-24px.svg");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    padding: 0.5rem 1rem;
+    margin-top: 0.25rem;
+  }
+
+  &__container {
+    border-top: 1px solid $secondary-cloud;
+    margin: 1 rem;
+
+    @include tablet {
+      display: flex;
+
+      padding: 1rem;
+    }
+  }
+  &__container-item {
+    padding: 0 1rem;
+
+    @include tablet {
+      flex: 1;
+      max-width: 50%;
+    }
+  }
+
+  &__container-border {
+    @include tablet {
+      border-left: 0.0625rem solid $secondary-cloud;
+    }
+  }
+}
+
+.modal__buttons-container {
+  padding: 1rem;
+  background-color: $bg-light-grey;
+}
+
+.add-inventory__form-wrapper-availability_input {
+  margin-top: 0.25rem;
+}
+
+.add-inventory__form-wrapper-details_input.error,
+.add-inventory__form-wrapper-availability_input.error,
+.add-inventory__form-wrapper-details_description.error {
+  border-color: $supporting-red;
+  height: 2.25rem;
+  border-radius: 20px;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: 1.25rem;
+  font-size: 13px;
+
+  @include tablet {
+    height: 2.375rem;
+  }
+}
+
+.add-inventory__form-wrapper-details_input__error,
+.add-inventory__form-wrapper-availability_input__error,
+.add-inventory__form-wrapper-details_description__error {
+  // padding-left: 2.05rem;
+  padding-top: 0.3125rem;
+  font-size: 0.6875rem;
+  color: $supporting-red;
+
+  img.error-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.2rem;
+    vertical-align: middle;
+  }
+}
+
+.add-inventory__form-wrapper-details_description.error {
+  border-color: $supporting-red;
+  height: 7.5rem;
+  border-radius: 20px;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: 1.25rem;
+  font-size: 13px;
+
+  @include tablet {
+    height: 7.5rem;
+  }
+}
+
+.add-inventory__form-wrapper-details_description__error {
+  padding-top: 0.3125rem;
+  font-size: 0.6875rem;
+  color: $supporting-red;
+
+  img.error-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.2rem;
+    vertical-align: middle;
+  }
+}

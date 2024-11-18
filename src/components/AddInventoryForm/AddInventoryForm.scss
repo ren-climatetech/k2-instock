@@ -195,7 +195,6 @@
   padding-top: 0.5rem;
   padding-bottom: 4.5rem;
   line-height: 1.25rem;
-  
 
   &::placeholder {
     font-size: 0.8125rem;
@@ -268,12 +267,10 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
-
 .add-inventory__form-wrapper-details_description {
   transition: border-color 0.3s ease;
   border: 1px solid $secondary-cloud;
 }
-
 
 .add-inventory__form-wrapper-details_description.error {
   border-color: $supporting-red;
