@@ -4,7 +4,7 @@ import SaveButton from "../../components/Buttons/SaveButton/SaveButton";
 import axios from "axios";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 function EditWarehouseItemPage() {
   const { itemId } = useParams();
@@ -18,6 +18,7 @@ function EditWarehouseItemPage() {
   const [contact_phone, setPhone] = useState("");
   const [contact_email, setEmail] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchWarehouseData = async () => {
@@ -45,6 +46,7 @@ function EditWarehouseItemPage() {
 
   const onClose = () => {
     console.log("Cancel button clicked");
+    navigate("/warehouses");
 
     // Reset form fields
     setWarehouseName("");
@@ -57,7 +59,10 @@ function EditWarehouseItemPage() {
     setEmail("");
   };
 
-  const onSave = async () => {
+  const onSave = (event) => {
+    event.preventDefault();
+    console.log(event);
+
     // Collect form data
     const warehouseData = {
       warehouse_name,
@@ -85,27 +90,32 @@ function EditWarehouseItemPage() {
       return;
     }
 
-    try {
-      const response = await axios.put(
-        `http://localhost:8080/api/warehouses/${itemId}`,
-        warehouseData
-      );
+    const editWarehouse = async () => {
+      try {
+        const response = await axios.put(
+          `http://localhost:8080/api/warehouses/${itemId}`,
+          warehouseData
+        );
 
-      if (response.status === 201) {
-        console.log("Warehouse saved successfully:", response.data);
+        console.log(response);
 
-        onClose();
-      } else {
-        console.error("Failed to save warehouse:", response.status);
+        if (response.status === 200) {
+          console.log("Warehouse saved successfully:", response.data);
+
+          onClose();
+        } else {
+          console.error("Failed to save warehouse:", response.status);
+        }
+      } catch (error) {
+        console.error("Error saving warehouse:", error);
       }
-    } catch (error) {
-      console.error("Error saving warehouse:", error);
-    }
+    };
+    editWarehouse();
   };
 
   return (
     <div className="layout">
-      <form className="editwarehouse">
+      <form className="editwarehouse" onSubmit={onSave}>
         <div className="editwarehouse__header">
           <img
             src={arrowBack}
@@ -199,7 +209,7 @@ function EditWarehouseItemPage() {
         </div>
         <div className="modal__buttons-container">
           <CancelButton onClick={onClose} />
-          <SaveButton onClick={onSave} />
+          <SaveButton />
         </div>
       </form>
     </div>

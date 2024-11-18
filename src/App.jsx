@@ -30,7 +30,7 @@ function App() {
 
         {/* Edit Pages */}
         <Route
-          path="/warehouses/:itemId/edit"
+          path="/warehouse/:itemId/edit"
           element={<EditWarehouseItemPage />}
         />
         <Route
