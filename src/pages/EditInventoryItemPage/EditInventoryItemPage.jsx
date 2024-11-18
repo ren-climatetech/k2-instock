@@ -8,6 +8,11 @@ import React, { useState, useEffect } from "react";
 
 function EditInventoryItemPage() {
   const { itemId } = useParams();
+  // set default state to prepare for API request getting all warehouses
+  const [allWarehouses, setAllWarehouses] = useState([]);
+  // set a default state for a warehouse id (will be a number so setting default to 0)
+  // that's going to need to come from looking at all the warehouses (stored above)
+  const [warehouseId, setWarehouseId] = useState(0);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [stockStatus, setStockStatus] = useState("");
@@ -23,6 +28,20 @@ function EditInventoryItemPage() {
     warehouse_id: "",
   });
 
+  // GET ALL THE WAREHOUSES VIA API REQUEST
+  // AND STORE IN STATE UPON PAGE LOAG
+  useEffect(() => {
+    const getAllWarehouses = async () => {
+      try {
+        const res = await axios.get("http://localhost:8080/api/warehouses");
+        setAllWarehouses(res.data);
+      } catch (error) {
+        console.log("error fetching all warehouses: ", error);
+      }
+    };
+    getAllWarehouses();
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,13 +50,29 @@ function EditInventoryItemPage() {
         );
 
         const itemData = inventoryResponse.data;
+
+        // loop over all the warehouses (pulled from API request and stored in state)
+        allWarehouses.forEach((warehouse) => {
+          // check if the warehouse name looped over for all warehouses
+          // matches the warehouse name returned for this particular inventory item and the API call for this specific inventory item
+          if (warehouse.warehouse_name === itemData.warehouse_name) {
+            // when match is found
+            // update the default state for the warehouseId
+            // with the corresponding id (since this match checks through the loop)
+            // when it finds the proper match, it will be on the right id for it
+            const idWarehouse = warehouse.id;
+            setWarehouseId(idWarehouse);
+          }
+        });
+
         setForm({
           item_name: itemData.item_name,
           description: itemData.description,
           category: itemData.category,
           status: itemData.status,
           quantity: itemData.quantity,
-          warehouse_id: itemData.warehouse_id,
+          // use the updated warehouseId state for this
+          warehouse_id: warehouseId,
         });
         setSelectedCategory(itemData.category);
         setSelectedWarehouse(itemData.warehouse_name);
@@ -63,7 +98,8 @@ function EditInventoryItemPage() {
     };
 
     fetchData();
-  }, [itemId]);
+  }, [itemId, allWarehouses]); // update dependencies, b/c we'll also be dependent on having the API response
+  //-                              for all the warehouses stored in state fully (after awaiting)
 
   const validateForm = () => {
     const newErrors = {};
@@ -109,9 +145,21 @@ function EditInventoryItemPage() {
   const handleWarehouseChange = (event) => {
     const value = event.target.value;
     setSelectedWarehouse(value);
+
+    // when user changes warehouse via dropdown,
+    // reuse logic same logic as earlier by looping over all warehouses
+    // but this time compare the warehouse name from all warehouses
+    // with the value the user selected
+    // udpdate state for the newly matched and corresponding warehouseId
+    allWarehouses.forEach((warehouse) => {
+      if (warehouse.warehouse_name === value) {
+        setWarehouseId(warehouse.id);
+      }
+    });
+
     setForm((prevForm) => ({
       ...prevForm,
-      warehouse_id: value,
+      warehouse_id: warehouseId, // use newly slected warehouseId to update form values
     }));
   };
 
@@ -151,8 +199,10 @@ function EditInventoryItemPage() {
       description: form.description,
       category: selectedCategory,
       status: stockStatus,
-      quantity: stockStatus === "In Stock" ? form.quantity : 0,
-      warehouse_id: selectedWarehouse,
+      //--                                              |   this was returning a string, which will also fail when entering it into the db...
+      //--                                              v   schema for db (set up in knex migration file) stipulates this must be an integeer
+      quantity: stockStatus === "In Stock" ? parseInt(form.quantity) : 0,
+      warehouse_id: warehouseId, // use warehouseId state when saving form
     };
 
     try {
@@ -160,7 +210,7 @@ function EditInventoryItemPage() {
         `http://localhost:8080/api/inventories/${itemId}`,
         itemData
       );
-
+      //
       if (response.status === 200) {
         console.log("Item updated successfully:", response.data);
         alert("Item updated successfully!");
@@ -229,7 +279,12 @@ function EditInventoryItemPage() {
             </h2>
             <div className="editinventory__status">
               <h3>Status</h3>
+
+
+
               <div className="editinventory__status-container">
+
+                
                 <div className="editinventory__status-selection">
                   <input
                     type="radio"
@@ -238,7 +293,7 @@ function EditInventoryItemPage() {
                     value="In Stock"
                     checked={form.status === "In Stock"}
                     onChange={handleChange}
-                  ></input>
+                  ></input> 
                   <label
                     className="editinventory__status-label"
                     htmlFor="status-instock"

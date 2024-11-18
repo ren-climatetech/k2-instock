@@ -191,6 +191,8 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
 
 
             <div className="add-inventory__form-wrapper-availability_status-radio-group">
+
+              
               {" "}
               <label>
                 {" "}
