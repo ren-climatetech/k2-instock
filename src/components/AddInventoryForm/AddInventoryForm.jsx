@@ -192,7 +192,7 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
 
             <div className="add-inventory__form-wrapper-availability_status-radio-group">
 
-              
+
               {" "}
               <label>
                 {" "}
@@ -218,6 +218,10 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
                 />{" "}
                 Out of Stock{" "}
               </label>{" "}
+
+
+
+              
             </div>
 
             

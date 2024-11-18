@@ -3,7 +3,7 @@ import CancelButton from "../../components/Buttons/CancelButton/CancelButton";
 import SaveButton from "../../components/Buttons/SaveButton/SaveButton";
 import axios from "axios";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 function EditInventoryItemPage() {
@@ -12,11 +12,17 @@ function EditInventoryItemPage() {
   // State management
   const [allWarehouses, setAllWarehouses] = useState([]);
   const [warehouseId, setWarehouseId] = useState(0);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([
+    "Electronics",
+    "Furniture",
+    "Clothing",
+    "Food",
+  ]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [stockStatus, setStockStatus] = useState("");
   const [warehouses, setWarehouses] = useState([]);
   const [selectedWarehouse, setSelectedWarehouse] = useState("");
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
     item_name: "",
@@ -65,9 +71,10 @@ function EditInventoryItemPage() {
           warehouse_id: matchingWarehouse ? matchingWarehouse.id : "",
         });
 
+        console.log(itemData);
         setSelectedCategory(itemData.category);
         setSelectedWarehouse(itemData.warehouse_name);
-        setStockStatus(itemData.status);
+        // setStockStatus(itemData.status);
       } catch (error) {
         console.error("Error fetching inventory item:", error);
       }
@@ -113,8 +120,7 @@ function EditInventoryItemPage() {
     const { name, value } = e.target;
     setForm((prevForm) => ({
       ...prevForm,
-      [name]:
-        name === "quantity" && !isNaN(value) ? parseInt(value, 10) : value,
+      [name]: name === "quantity" && isNaN(value) ? parseInt(value, 10) : value,
     }));
   };
 
@@ -153,17 +159,7 @@ function EditInventoryItemPage() {
   };
 
   const onClose = () => {
-    setForm({
-      item_name: "",
-      description: "",
-      category: "",
-      status: "In Stock",
-      quantity: "",
-      warehouse_id: "",
-    });
-    setSelectedCategory("");
-    setStockStatus("");
-    setSelectedWarehouse("");
+    navigate("/inventories");
   };
 
   const onSave = async (event) => {
@@ -178,8 +174,8 @@ function EditInventoryItemPage() {
       item_name: form.item_name,
       description: form.description,
       category: selectedCategory,
-      status: stockStatus,
-      quantity: stockStatus === "In Stock" ? parseInt(form.quantity) : 0,
+      status: form.status,
+      quantity: form.status === "In Stock" ? parseInt(form.quantity) : 0,
       warehouse_id: warehouseId,
     };
 
@@ -192,6 +188,7 @@ function EditInventoryItemPage() {
       if (response.status === 200) {
         console.log("Item updated successfully:", response.data);
         alert("Item updated successfully!");
+        navigate("/inventories");
       } else {
         console.error("Failed to update item:", response.status);
       }
@@ -204,11 +201,13 @@ function EditInventoryItemPage() {
     <div className="layout">
       <form className="editinventory" onSubmit={onSave}>
         <div className="editinventory__header">
-          <img
-            src={arrowBack}
-            alt="arrow icon"
-            className="editinventory__icon-arrow"
-          />
+          <Link to="/inventories" className="editinventory__icon-arrow">
+            <img
+              src={arrowBack}
+              alt="arrow icon"
+              className="editinventory__icon-arrow"
+            />
+          </Link>
           <h1>Edit Inventory Item</h1>
         </div>
 
@@ -258,39 +257,32 @@ function EditInventoryItemPage() {
             <div className="editinventory__status">
               <h3>Status</h3>
 
-              <div className="editinventory__status-container">
-                <div className="editinventory__status-selection">
+              <div className="add-inventory__form-wrapper-availability_status-radio-group">
+                {" "}
+                <label>
+                  {" "}
                   <input
+                    className="add-inventory__form-wrapper-availability_status-radio-group_input1"
                     type="radio"
-                    id="status-instock"
                     name="status"
                     value="In Stock"
                     checked={form.status === "In Stock"}
-                    onChange={handleStockChange}
-                  />
-                  <label
-                    className="editinventory__status-label"
-                    htmlFor="status-instock"
-                  >
-                    In Stock
-                  </label>
-                </div>
-                <div className="editinventory__status-selection">
+                    onChange={handleChange}
+                  />{" "}
+                  In Stock{" "}
+                </label>{" "}
+                <label>
+                  {" "}
                   <input
+                    className="add-inventory__form-wrapper-availability_status-radio-group_input1"
                     type="radio"
-                    id="status-outofstock"
                     name="status"
                     value="Out of Stock"
-                    checked={form.status === "Out of Stock"}
-                    onChange={handleStockChange}
-                  />
-                  <label
-                    className="editinventory__status-label"
-                    htmlFor="status-outofstock"
-                  >
-                    Out of Stock
-                  </label>
-                </div>
+                    checked={form.status === "Out Of Stock"}
+                    onChange={handleChange}
+                  />{" "}
+                  Out of Stock{" "}
+                </label>{" "}
               </div>
               {form.status === "In Stock" && (
                 <div className="editinventory__quantity">
@@ -323,9 +315,9 @@ function EditInventoryItemPage() {
           </div>
         </div>
 
-        <div className="editinventory__footer">
-          <CancelButton onClose={onClose} />
-          <SaveButton />
+        <div className="modal__buttons-container">
+          <CancelButton onClick={onClose} />
+          <SaveButton type="submit" />
         </div>
       </form>
     </div>
