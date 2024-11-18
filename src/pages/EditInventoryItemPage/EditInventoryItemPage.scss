@@ -2,15 +2,9 @@
 @use "../../styles/partials/variables" as *;
 
 .editinventory {
-  margin: 0 1rem;
   background-color: $primary-white;
   box-shadow: $box-shadow;
   border-radius: 0.25rem;
-  // border: 2px solid red;
-
-  @include desktop{
-    margin: 0 2.5rem;
-  }
 
   &__icon-arrow {
     padding-right: 1rem;
@@ -18,13 +12,10 @@
 
   &__header {
     display: flex;
-    //   border: 2px solid red;
     padding: 1.5rem 1rem;
   }
 
   &__header-details {
-    // border: 2px solid red;
-    // border-top: 1px solid $secondary-cloud;
     padding: 1.5rem 1rem;
 
     @include tablet {
@@ -33,22 +24,18 @@
   }
 
   &__name {
-    // border: 2px solid red;
     padding: 0 1rem;
     padding-bottom: 1rem;
   }
 
   &__description {
-    // border: 2px solid red;
     padding: 0 1rem;
   }
 
   &__category {
-    // border: 2px solid red;
     padding: 01rem;
   }
   &__header-availability {
-    // border: 2px solid red;
     border-top: 0.0625rem solid $secondary-cloud;
     padding: 1.5rem 1rem;
 
@@ -56,12 +43,9 @@
       padding-top: 0rem;
       border: none;
     }
-
-    // border-top: 1px solid $secondary-cloud;
   }
 
   &__status {
-    // border: 2px solid red;
     padding: 0 1rem;
   }
 
@@ -75,41 +59,38 @@
     }
   }
   &__status-selection {
-    // border: 2px solid red;
     width: 50%;
   }
   &__status-label {
-    // border: 2px solid red;
     padding: 0 0.25rem;
   }
 
   &__quantity {
     padding: 1rem 0;
-    //  border: 2px solid red;
   }
 
   &__warehouse {
-    // border: 2px solid red;
     padding: 1rem;
   }
 
   &__entry {
     width: 100%;
-    border-radius: 1rem;
+    border-radius: 1.25rem;
     border: 0.0625rem solid $secondary-cloud;
     resize: none;
     padding: 0.5rem 1rem;
-   
+    margin-top: 0.25rem;
   }
   &__entry-selection {
     width: 100%;
-    border-radius: 1rem;
+    border-radius: 1.25rem;
     border: 0.0625rem solid $secondary-cloud;
     appearance: none;
     background-image: url("../../assets/icons/arrow_drop_down-24px.svg");
     background-repeat: no-repeat;
     background-position: right 0.25rem center;
-    padding: 0.25rem 1rem;
+    padding: 0.5rem 1rem;
+    margin-top: 0.25rem;
   }
 
   &__container {
@@ -118,7 +99,7 @@
 
     @include tablet {
       display: flex;
-      // border: 2px solid red;
+
       padding: 1rem;
     }
   }
@@ -128,8 +109,6 @@
     @include tablet {
       flex: 1;
       max-width: 50%;
-      // border: 2px solid red;
-      // padding: 0 1rem;
     }
   }
 
@@ -143,4 +122,8 @@
 .modal__buttons-container {
   padding: 1rem;
   background-color: $bg-light-grey;
+}
+
+.add-inventory__form-wrapper-availability_input {
+  margin-top: 0.25rem;
 }

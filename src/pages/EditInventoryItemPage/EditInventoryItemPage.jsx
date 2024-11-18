@@ -168,7 +168,7 @@ function EditInventoryItemPage() {
   };
 
   return (
-    <>
+    <div className="layout">
       <form className="editinventory">
         <div className="editinventory__header">
           <img
@@ -326,7 +326,7 @@ function EditInventoryItemPage() {
           <SaveButton onClick={onSave} />
         </div>
       </form>
-    </>
+    </div>
   );
 }
 
