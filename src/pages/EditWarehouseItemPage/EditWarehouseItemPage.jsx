@@ -3,9 +3,12 @@ import CancelButton from "../../components/Buttons/CancelButton/CancelButton";
 import SaveButton from "../../components/Buttons/SaveButton/SaveButton";
 import axios from "axios";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 function EditWarehouseItemPage() {
+  const { warehouseId } = useParams();
+  console.log("Received warehouseId:", warehouseId);
   const [warehouse_name, setWarehouseName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -14,6 +17,31 @@ function EditWarehouseItemPage() {
   const [contact_position, setPosition] = useState("");
   const [contact_phone, setPhone] = useState("");
   const [contact_email, setEmail] = useState("");
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchWarehouseData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/warehouses/${warehouseId}`
+        );
+        const warehouseData = response.data;
+
+        setWarehouseName(warehouseData.warehouse_name);
+        setAddress(warehouseData.address);
+        setCity(warehouseData.city);
+        setCountry(warehouseData.country);
+        setContactName(warehouseData.contact_name);
+        setPosition(warehouseData.contact_position);
+        setPhone(warehouseData.contact_phone);
+        setEmail(warehouseData.contact_email);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchWarehouseData();
+  }, [warehouseId]);
 
   const onClose = () => {
     console.log("Cancel button clicked");
@@ -58,16 +86,14 @@ function EditWarehouseItemPage() {
     }
 
     try {
-      // Send data to backend
-      const response = await axios.post(
-        "http://localhost:8080/api/warehouse",
+      const response = await axios.put(
+        `http://localhost:8080/api/warehouses/${warehouseId}`,
         warehouseData
       );
 
       if (response.status === 201) {
         console.log("Warehouse saved successfully:", response.data);
 
-        // Reset form fields after saving
         onClose();
       } else {
         console.error("Failed to save warehouse:", response.status);
@@ -78,7 +104,7 @@ function EditWarehouseItemPage() {
   };
 
   return (
-    <>
+    <div className="layout">
       <form className="editwarehouse">
         <div className="editwarehouse__header">
           <img
@@ -176,7 +202,7 @@ function EditWarehouseItemPage() {
           <SaveButton onClick={onSave} />
         </div>
       </form>
-    </>
+    </div>
   );
 }
 
