@@ -7,8 +7,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function EditWarehouseItemPage() {
-  const { warehouseId } = useParams();
-  console.log("Received warehouseId:", warehouseId);
+  const { itemId } = useParams();
+  console.log("Received itemId:", itemId);
   const [warehouse_name, setWarehouseName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -23,7 +23,7 @@ function EditWarehouseItemPage() {
     const fetchWarehouseData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/warehouses/${warehouseId}`
+          `http://localhost:8080/api/warehouses/${itemId}`
         );
         const warehouseData = response.data;
 
@@ -41,7 +41,7 @@ function EditWarehouseItemPage() {
     };
 
     fetchWarehouseData();
-  }, [warehouseId]);
+  }, [itemId]);
 
   const onClose = () => {
     console.log("Cancel button clicked");
@@ -87,7 +87,7 @@ function EditWarehouseItemPage() {
 
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/warehouses/${warehouseId}`,
+        `http://localhost:8080/api/warehouses/${itemId}`,
         warehouseData
       );
 
