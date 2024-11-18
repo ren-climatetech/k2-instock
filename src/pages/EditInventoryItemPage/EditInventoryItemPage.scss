@@ -51,8 +51,7 @@
 
   &__status-container {
     display: flex;
-    gap: 1rem;
-    padding: 0rem 1rem;
+    gap: rem;
 
     @include tablet {
       min-width: 50%;
@@ -60,6 +59,7 @@
   }
   &__status-selection {
     width: 50%;
+    
   }
   &__status-label {
     padding: 0 0.25rem;
