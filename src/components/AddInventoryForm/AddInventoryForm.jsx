@@ -183,10 +183,16 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
             <h2 className="add-inventory__form-wrapper-availability_title">
               Item Availability
             </h2>
+
+
             <label className="add-inventory__form-wrapper-availability_label">
               Status
             </label>
+
+
             <div className="add-inventory__form-wrapper-availability_status-radio-group">
+
+
               {" "}
               <label>
                 {" "}
@@ -212,7 +218,13 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
                 />{" "}
                 Out of Stock{" "}
               </label>{" "}
+
+
+
+              
             </div>
+
+            
             {form.status === "In Stock" && (
               <>
                 <label className="add-inventory__form-wrapper-availability_label">
@@ -244,6 +256,8 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
             <label className="add-inventory__form-wrapper-availability_label">
               Warehouse
             </label>
+
+
             <div className="add-inventory__dropdown-container">
               <select
                 className={`add-inventory__form-wrapper-availability_input ${
