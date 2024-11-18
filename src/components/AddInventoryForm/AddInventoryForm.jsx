@@ -6,6 +6,7 @@ import AddButton from "../Buttons/AddButton/AddButton";
 import CancelButton from "../Buttons/CancelButton/CancelButton";
 import ErrorImage from "../../assets/icons/error-24px.svg";
 import ArrowIcon from "../../assets/icons/arrow_drop_down-24px.svg";
+import { toast } from "react-toastify";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -79,12 +80,15 @@ const AddInventoryForm = ({ onInventoryAdded }) => {
       try {
         const response = await axios.post(`${BASE_URL}/api/inventories`, form);
         if (response.status === 201) {
+          toast.success(`Inventory ${form.item_name} was successfully created.`)
           console.log("Inventory item created successfully");
           navigate("/inventories");
         } else {
+          toast.error(`Error creating inventory item`)
           console.log("Error creating inventory item");
         }
       } catch (error) {
+        toast.error(`Error creating inventory item. ${error.response?.data?.message}`)
         console.error("Error creating inventory item:", error);
       }
     }

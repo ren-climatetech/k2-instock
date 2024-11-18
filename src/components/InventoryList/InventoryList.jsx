@@ -5,31 +5,18 @@ import DeleteFromListButton from "../Buttons/DeleteFromListButton.js/DeleteFromL
 import EditFromListButton from "../Buttons/EditFromListButton/EditFromListButton";
 import chevronIcon from "../../assets/icons/chevron_right-24px.svg";
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DeleteModal from "../DeleteModal/DeleteModal";
-// Use the base url from environment variables
+
+// use the base URL from environment variables
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
-const InventoryList = () => {
+const InventoryList = ({ inventories, setInventories }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedInventory, setSelectedInventory] = useState(null);
-  const [inventories, setInventories] = useState([]);
 
-  async function getInventories() {
-    try {
-      const { data } = await axios.get(`${BASE_URL}/api/inventories`);
-      setInventories(data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  useEffect(() => {
-    getInventories();
-  }, []);
-
-  const openModal = (warehouse) => {
-    setSelectedInventory(warehouse);
+  const openModal = (inventory) => {
+    setSelectedInventory(inventory);
     setIsModalOpen(true);
   };
 
@@ -37,6 +24,7 @@ const InventoryList = () => {
     setIsModalOpen(false);
     setSelectedInventory(null);
   };
+
   const handleDelete = async () => {
     if (selectedInventory) {
       try {
@@ -45,7 +33,12 @@ const InventoryList = () => {
         );
 
         if (response.status === 204) {
-          getInventories();
+          // remove the deleted inventory from the state
+          setInventories((prevInventories) =>
+            prevInventories.filter(
+              (inventory) => inventory.id !== selectedInventory.id
+            )
+          );
           closeModal();
           toast.success(
             `${selectedInventory.item_name} with ID ${selectedInventory.id} was successfully deleted.`
@@ -63,6 +56,7 @@ const InventoryList = () => {
       }
     }
   };
+
   return (
     <>
       <ul className="inventories__list">
@@ -75,58 +69,56 @@ const InventoryList = () => {
             category,
             status,
             quantity,
-          }) => {
-            return (
-              <li key={id} className="inventories__item">
-                <div className="inventories__info-link">
-                  <div className="inventories__content inventories__content-item">
-                    <span className="inventories__label">Inventory Item</span>
-                    <Link
-                      to={`/inventories/${id}`}
-                      className="inventories__inventory"
-                    >
-                      {item_name}
-                      <img
-                        src={chevronIcon}
-                        alt="arrow icon"
-                        className="inventories__inventory-icon"
-                      />
-                    </Link>
-                  </div>
-                  <div className="inventories__content inventories__content-category">
-                    <span className="inventories__label">Category</span>
-                    <p className="inventories__address">{category}</p>
-                  </div>
-                  <div className="inventories__content inventories__content-status">
-                    <span className="inventories__label">Status</span>
-                    <p
-                      className={`inventories__content ${
-                        status.toLowerCase() === "in stock"
-                          ? "inventories__content in-stock"
-                          : "inventories__content out-of-stock"
-                      }`}
-                    >
-                      {status.toUpperCase()}
-                    </p>
-                  </div>
-                  <div className="inventories__content inventories__content-quantity">
-                    <span className="inventories__label">QTY</span>
-                    <p>{quantity}</p>
-                  </div>
-                  <div className="inventories__content inventories__content-name">
-                    <span className="inventories__label">Warehouse</span>
-                    <p>{warehouse_name}</p>
-                  </div>
+          }) => (
+            <li key={id} className="inventories__item">
+              <div className="inventories__info-link">
+                <div className="inventories__content inventories__content-item">
+                  <span className="inventories__label">Inventory Item</span>
+                  <Link
+                    to={`/inventories/${id}`}
+                    className="inventories__inventory"
+                  >
+                    {item_name}
+                    <img
+                      src={chevronIcon}
+                      alt="arrow icon"
+                      className="inventories__inventory-icon"
+                    />
+                  </Link>
                 </div>
-                <div className="action-buttons">
-                  <DeleteFromListButton
-                    onClick={() => openModal({ id, item_name })}
-                  />
-                  <EditFromListButton path={`/inventories/${id}/edit`} />
+                <div className="inventories__content inventories__content-category">
+                  <span className="inventories__label">Category</span>
+                  <p className="inventories__address">{category}</p>
                 </div>
-              </li>
-            );
-          }
+                <div className="inventories__content inventories__content-status">
+                  <span className="inventories__label">Status</span>
+                  <p
+                    className={`inventories__content ${
+                      status.toLowerCase() === "in stock"
+                        ? "inventories__content in-stock"
+                        : "inventories__content out-of-stock"
+                    }`}
+                  >
+                    {status.toUpperCase()}
+                  </p>
+                </div>
+                <div className="inventories__content inventories__content-quantity">
+                  <span className="inventories__label">QTY</span>
+                  <p>{quantity}</p>
+                </div>
+                <div className="inventories__content inventories__content-name">
+                  <span className="inventories__label">Warehouse</span>
+                  <p>{warehouse_name}</p>
+                </div>
+              </div>
+              <div className="action-buttons">
+                <DeleteFromListButton
+                  onClick={() => openModal({ id, item_name })}
+                />
+                <EditFromListButton path={`/inventories/${id}/edit`} />
+              </div>
+            </li>
+          )
         )}
       </ul>
       {isModalOpen && (
